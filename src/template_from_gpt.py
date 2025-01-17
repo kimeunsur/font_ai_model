@@ -1,7 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
-import cv2
-
+import cv2, os
 def create_image_template_with_korean_text(height, width, channels=3):
     """
     한국어 텍스트를 포함한 이미지 템플릿 생성.
@@ -37,9 +36,11 @@ def create_image_template_with_korean_text(height, width, channels=3):
 
     # Pillow로 한국어 텍스트 추가
     draw = ImageDraw.Draw(template_pil)
-    font_path = "/System/Library/Fonts/Supplemental/AppleGothic.ttf"  # 사용 가능한 한글 폰트 경로
+    font_path = "NanumGothic.ttf"  # 사용 가능한 한글 폰트 경로
+    if not os.path.exists(font_path):
+        print(f"Font file not found at {font_path}")
     font = ImageFont.truetype(font_path, 40)  # 폰트 크기 설정
-    text = "템플릿"  # 한국어 텍스트
+    text = "호"  # 한국어 텍스트
 
     # 텍스트 경계 계산
     bbox = font.getbbox(text)  # (xmin, ymin, xmax, ymax)
