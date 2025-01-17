@@ -1,0 +1,28 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# OS generated files
+.DS_Store
+*.swp
+*.swo
+Thumbs.db
+Desktop.ini
+
+# IDE settings
+.vscode/
+.idea/
+
+# Python distribution and logs
+*.log
+*.egg-info/
+dist/
+build/
+
+# font_dataset 폴더 무시
+ai_model/font_images/font_dataset/
