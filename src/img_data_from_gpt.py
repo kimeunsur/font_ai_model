@@ -7,7 +7,7 @@ os.makedirs(output_dir, exist_ok=True)
 
 # 사용할 폰트 파일과 텍스트
 font_path = "/usr/share/fonts/truetype/dejavu/AppleGothic.ttf"  # 폰트 파일 경로
-text = "쩱붟뢁얇겮셸맽뫾햩쇔굿횿캶뿞모톤쭙퀔폿혁뻃솭봈삢챝료꿾햭괐쑎"
+text = "음떬툮굅뿐춗퇘옦펧섷볇륩쐤쎔샬뎧랭꺫뇨꺆믭뙒뛤쨏쨪쫪윻타썂꽙맔뚱퇋쐐쳋겲봖뢁툳팑영교롦껱쳲릂쾽죲팵흭귛픝떝옞퇝룣낻캹쁚뎓캖럗촓뾁볂쪡뿪톛챷뎾홪튕솓횣휧퍗빞띮욿괭쐒콺쮛훎헛톄뽺퐘짿냁둅툚쵺뒆힙퀎놮뚮벓콘"
 
 # 이미지 생성
 for char in text:

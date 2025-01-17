@@ -19,7 +19,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 datagen = ImageDataGenerator(rescale=1./255)
 train_generator = datagen.flow_from_directory(
-    "font_images/",
+    "data/",
     target_size=(64, 64),
     color_mode='grayscale',
     class_mode='categorical'
