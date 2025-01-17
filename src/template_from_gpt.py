@@ -36,11 +36,12 @@ def create_image_template_with_korean_text(height, width, channels=3):
 
     # Pillow로 한국어 텍스트 추가
     draw = ImageDraw.Draw(template_pil)
-    font_path = "NanumGothic.ttf"  # 사용 가능한 한글 폰트 경로
+    font_path = "data/NanumGothic.ttf"  # 사용 가능한 한글 폰트 경로
     if not os.path.exists(font_path):
         print(f"Font file not found at {font_path}")
+        exit(1)
     font = ImageFont.truetype(font_path, 40)  # 폰트 크기 설정
-    text = "호"  # 한국어 텍스트
+    text = "수"  # 한국어 텍스트
 
     # 텍스트 경계 계산
     bbox = font.getbbox(text)  # (xmin, ymin, xmax, ymax)
@@ -58,4 +59,4 @@ def create_image_template_with_korean_text(height, width, channels=3):
 
 # 템플릿 생성 및 저장
 img1_template = create_image_template_with_korean_text(512, 512, 3)
-cv2.imwrite("img1_template_korean_fixed.png", img1_template)
+cv2.imwrite("data/img2_template_korean_fixed.png", img1_template)
