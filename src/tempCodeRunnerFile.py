@@ -2,12 +2,12 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 
 # 출력 폴더 생성
-output_dir = "font_images/nanumpen"
+output_dir = "font_images/nanumgothic"
 os.makedirs(output_dir, exist_ok=True)
 
 # 사용할 폰트 파일과 텍스트
-font_path = "/Users/kimeunsur/2024winter/4주차/font_ai_model/src/NanumPen.ttf"  # 폰트 파일 경로
-text = "롂쭸햙크뻨캢뱄땜삧쬅뉦뽆욆쵣촧뭮씃뗓듷쭱녕쀄쩕콵밭튼퓃쭷븸캺믖쉣듀센긬쓥륅쳳뼣럴꽺뉤뵲쇽젰쀽즃먪즑싽늧뷯콳뢂씖룽뼈벬럛뎮궅쀣빙뢵낯뀢욯퉔뷛곪"
+font_path = "NanumGothic.ttf"  # 폰트 파일 경로
+text = "툚껱톛쾽음뾁쳲뙒꺫뚱쨏럗쎔봖교캖욿꺆뎾팵퀎쐒튕뛤챷떝썂뎓퐘뽺"
 import os
 print("Font path exists:", os.path.exists(font_path))
 # 이미지 생성
