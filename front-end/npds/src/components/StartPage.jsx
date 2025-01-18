@@ -5,7 +5,7 @@ const StartPage = () => {
   const navigate = useNavigate(); // useNavigate 훅을 사용하여 페이지 이동 제어
 
   const handleButtonClick = () => {
-    navigate("/another"); // "/another" 경로로 이동
+    navigate("/loginpage"); // "/loginpage" 경로로 이동
   };
 
   return (

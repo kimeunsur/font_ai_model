@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import StartPage from "./components/StartPage";
-import AnotherPage from "./components/AnotherPage";
+import LoginPage from "./components/LoginPage";
 
 const App = () => {
   return (
@@ -9,8 +9,8 @@ const App = () => {
       {/* StartPage는 기본 경로("/")에서 렌더링 */}
       <Route path="/" element={<StartPage />} />
 
-      {/* AnotherPage는 "/another" 경로에서 렌더링 */}
-      <Route path="/another" element={<AnotherPage />} />
+      {/* LoginPage는 "/loginpage" 경로에서 렌더링 */}
+      <Route path="/loginpage" element={<LoginPage />} />
     </Routes>
   );
 };
