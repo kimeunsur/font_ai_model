@@ -44,7 +44,7 @@ const SignUp = ({ isOpen, onClose }) => {
           <input
             id="email"
             type="email"
-            placeholder="apdlfwnth"
+            placeholder="메일주소"
             onChange={(e) => setEmail(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded"
             required
