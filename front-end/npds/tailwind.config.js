@@ -74,6 +74,9 @@ module.exports = {
     },
     container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/forms"), // 설치된 forms 플러그인 활성화
+    require("@tailwindcss/typography"), // 설치된 typography 플러그인 활성화
+  ],
   darkMode: ["class"],
 };

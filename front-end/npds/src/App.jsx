@@ -1,12 +1,17 @@
 import React from "react";
-import StartPage from "@/components/StartPage";
-import "@/styles/tailwind.css";
+import { Routes, Route } from "react-router-dom";
+import StartPage from "./components/StartPage";
+import AnotherPage from "./components/AnotherPage";
 
 const App = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <StartPage />
-    </div>
+    <Routes>
+      {/* StartPage는 기본 경로("/")에서 렌더링 */}
+      <Route path="/" element={<StartPage />} />
+
+      {/* AnotherPage는 "/another" 경로에서 렌더링 */}
+      <Route path="/another" element={<AnotherPage />} />
+    </Routes>
   );
 };
 

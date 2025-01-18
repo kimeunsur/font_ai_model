@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import StartPage from "./components/StartPage";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 import "./styles/tailwind.css";
 
-const App = () => {
-  return <StartPage />;
-};
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
