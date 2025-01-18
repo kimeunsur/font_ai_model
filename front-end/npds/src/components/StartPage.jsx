@@ -1,14 +1,31 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import LoginModal from "./LoginModal";
+import SignUp from "./SignUp";
 
 const StartPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // 로그인 모달 상태
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false); // 회원가입 모달 상태
+  const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    setIsModalOpen(true); // 모달 열기
+  const openLoginModal = () => {
+    setIsLoginModalOpen(true);
+    setIsSignUpModalOpen(false); // 회원가입 모달 닫기
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false); // 모달 닫기
+  const openSignUpModal = () => {
+    setIsSignUpModalOpen(true);
+    setIsLoginModalOpen(false); // 로그인 모달 닫기
+  };
+
+  const closeAllModals = () => {
+    setIsLoginModalOpen(false);
+    setIsSignUpModalOpen(false);
+  };
+
+  const handleLoginSuccess = () => {
+    closeAllModals();
+    navigate("/main"); // Navigate to MainPage
   };
 
   return (
@@ -20,45 +37,23 @@ const StartPage = () => {
           "뭐, 대충 해줄 테니까 감성 그런 거 기대하지 마"
         </h1>
         <button
-          onClick={handleButtonClick}
+          onClick={openLoginModal}
           className="text-5xl py-6 px-12 bg-blue-500 text-white rounded-md hover:bg-blue-600"
         >
           시작하기
         </button>
       </div>
 
-      {/* 모달 */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
-            <h2 className="text-2xl font-bold mb-4">로그인</h2>
-            <form className="space-y-4">
-              <input
-                type="text"
-                placeholder="아이디"
-                className="w-full p-2 border border-gray-300 rounded"
-              />
-              <input
-                type="password"
-                placeholder="비밀번호"
-                className="w-full p-2 border border-gray-300 rounded"
-              />
-              <button
-                type="submit"
-                className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-              >
-                로그인
-              </button>
-            </form>
-            <button
-              onClick={closeModal}
-              className="mt-4 text-gray-500 hover:underline"
-            >
-              닫기
-            </button>
-          </div>
-        </div>
-      )}
+      {/* 로그인 모달 */}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={closeAllModals}
+        onSignUp={openSignUpModal}
+        onLoginSuccess={handleLoginSuccess}
+      />
+
+      {/* 회원가입 모달 */}
+      <SignUp isOpen={isSignUpModalOpen} onClose={closeAllModals} />
     </main>
   );
 };

@@ -1,8 +1,9 @@
 module.exports = {
   content: [
     "./src/**/*.{html,js,ts,jsx,tsx}",
-    "app/**/*.{ts,tsx}",
-    "components/**/*.{ts,tsx}",
+    //"app/**/*.{ts,tsx}",
+    //"components/**/*.{ts,tsx}",
+    "./public/index.html",
   ],
   theme: {
     extend: {
@@ -70,6 +71,9 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      backgroundImage: {
+        'bonobono-face': "url('/bonobonoface.jpg')", // public 폴더 기준으로 경로 지정
       },
     },
     container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
