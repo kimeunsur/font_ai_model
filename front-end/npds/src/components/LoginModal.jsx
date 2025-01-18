@@ -1,13 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
+import { loginUser } from "../systems/request";
 
 const LoginModal = ({ isOpen, onClose, onSignUp, onLoginSuccess }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   if (!isOpen) return null;
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // 로그인 성공 처리 (테스트용)
-    console.log("로그인 성공!");
-    onLoginSuccess();
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await loginUser(email, password);
+      console.log("로그인 성공:",data);
+    } catch (error) {
+      console.error("로그인 실패:", error);
+      setError(error.response?.data?.message || "개같이 실패");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -16,14 +30,20 @@ const LoginModal = ({ isOpen, onClose, onSignUp, onLoginSuccess }) => {
         <h2 className="text-2xl font-bold mb-4">로그인</h2>
         <form className="space-y-4" onSubmit={handleLogin}>
           <input
-            type="text"
-            placeholder="아이디"
+            id="email"
+            type="email"
+            placeholder="메일주소"
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded"
+            required
           />
           <input
+            id="password"
             type="password"
             placeholder="비밀번호"
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded"
+            required
           />
           <button
             type="submit"
