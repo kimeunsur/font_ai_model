@@ -7,7 +7,7 @@ const CreateLetter = () => {
     style={{
         backgroundImage: `url("/bonobonoface.jpg")`, // public 폴더 기준
         backgroundSize: "cover",
-        backgroundPosition: "right",
+        backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
     >
