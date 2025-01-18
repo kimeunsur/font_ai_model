@@ -1,8 +1,12 @@
 package com.example.npds.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.npds.service.FontService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Base64;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import com.example.npds.entity.Font;
+import com.example.npds.entity.User;
+import com.example.npds.entity.FontDto;
 
 
 
@@ -22,28 +30,47 @@ public class FontController {
     @Autowired
     private FontService fontService;
 
-    @GetMapping("/user/{userId}")
-    public List<Font> getFontByUserId(@PathVariable Long userId) {
-        List<Font> fonts = fontService.getFontByUserId(userId);
-        fonts.forEach(font -> {
-            if (font.getFontFile() != null) {
-                String encodedFile = Base64.getEncoder().encodeToString(font.getFontFile());
-                font.setFontFile(encodedFile.getBytes());
-            }
-        });
-        return fonts;
+    public FontController(FontService fontService) {
+        this.fontService = fontService;
     }
 
-    @PostMapping("post")
-    public Font createFont(@RequestBody Font font) {      
-        try { 
-            if (font.getFontFile() != null) {
-                byte[] decoderFile = Base64.getDecoder().decode(font.getFontFile());
-                font.setFontFile(decoderFile);
-            } 
-            return fontService.saveFont(font);
+    @GetMapping("/user/{userId}")
+    public List<FontDto> getFontByUserId(@PathVariable Long userId) {
+        return fontService.getFontByUserId(userId).stream()
+            .map(font -> new FontDto(
+                font.getId(),
+                font.getFontName(),
+                font.getFontFile() != null ? Base64.getEncoder().encodeToString(font.getFontFile()) : null,
+                //Base64.getEncoder().encodeToString(font.getFontFile()), // Base64 인코딩
+                font.getCreatedAt()
+            ))
+            .collect(Collectors.toList());
+    }
+    
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadFont(
+        @RequestParam("userId") Long userId,
+        @RequestParam("fontName") String fontName,
+        @RequestParam("fontFile") MultipartFile fontFile) {
+        try {
+            // 파일 데이터를 byte[]로 변환
+            byte[] fontData = fontFile.getBytes();
+
+            // Font 객체 생성
+            Font font = new Font();
+            font.setFontName(fontName);
+            font.setFontFile(fontData);
+
+            // User 설정
+            User user = new User();
+            user.setId(userId);
+            font.setUser(user);
+
+            fontService.saveFont(font); // 서비스 계층 호출
+            return ResponseEntity.ok("Font uploaded successfully!");
         } catch (Exception e) {
-            throw new RuntimeException("error in saving font:"+e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error uploading font: " + e.getMessage());
         }
     }
     
