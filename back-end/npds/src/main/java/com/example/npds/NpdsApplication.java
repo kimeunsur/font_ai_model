@@ -1,3 +1,7 @@
+//brew services stop postgresql
+//brew services start postgresql
+//brew services list
+
 package com.example.npds;
 
 import org.springframework.boot.SpringApplication;
