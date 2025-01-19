@@ -1,6 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
 import os, cv2
 import numpy as np
+
 def augment_image(image):
     angle = np.random.uniform(-15, 15)
     h, w = image.shape[:2]
@@ -43,13 +44,15 @@ if not font_files:
 else:
     print(f"Found {len(font_files)} font files.")
 
-cnt = 0
 # 이미지 생성
-for font_file in font_files:
+for font_index, font_file in enumerate(font_files):
     font_path = os.path.join(font_dir, font_file)
-    print(f"processing font: {font_file}")
-    cnt += 1
-    for char in text:
+    # 각 폰트 스타일 디렉토리 생성
+    font_output_dir = os.path.join(output_dir, f"font_{font_index}")
+    os.makedirs(font_output_dir, exist_ok=True)
+    
+    print(f"Processing font: {font_file} -> Saving to {font_output_dir}")
+    for char_index, char in enumerate(text):
         img = Image.new("L", (256, 256), color=255)  # 흰 배경 이미지 생성
         draw = ImageDraw.Draw(img)
         try:
@@ -57,10 +60,18 @@ for font_file in font_files:
         except OSError as e:
             print(f"error loading font {font_file}: {e}")
             continue
+        
         # 텍스트 크기 계산
         bbox = font.getbbox(char)  # (xmin, ymin, xmax, ymax) 반환
         text_width = bbox[2] - bbox[0]
         text_height = bbox[3] - bbox[1]
         position = ((256 - text_width) // 2, (256 - text_height) // 2)
         draw.text(position, char, fill=0, font=font)  # 문자 그리기
-        img.save(f"{output_dir}/{char}{cnt}.png")  # 저장
+        
+        img_np = np.array(img)
+        augmented_img = augment_image(img_np)
+        augmented_img = Image.fromarray(augmented_img)
+        
+        save_path = os.path.join(font_output_dir, f"img_{char_index}.png")
+        augmented_img.save(save_path)
+print("All images generated successfully.")
