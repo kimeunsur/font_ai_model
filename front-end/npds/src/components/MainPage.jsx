@@ -14,7 +14,7 @@ const MainPage = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <h1 className="text-6xl font-bold text-white shadow-lg mb-12">
+      <h1 className="text-6xl font-bold text-black shadow-lg mb-12">
         폰트 확인용 테스트 텍스트입니다
       </h1>
 
