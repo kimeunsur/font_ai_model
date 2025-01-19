@@ -1,0 +1,61 @@
+/* styles/MainPage.css */
+.main {
+    min-height: 100vh; /* Tailwind's min-h-screen */
+    display: flex; /* Tailwind's flex */
+    flex-direction: column; /* Tailwind's flex-col */
+    align-items: center; /* Tailwind's items-center */
+    justify-content: center; /* Tailwind's justify-center */
+    gap: 1.5rem; /* Tailwind's gap-6 */
+    background-image: url("./background.jpg"); /* Inline style */
+    background-size: cover; /* Inline style */
+    background-position: center; /* Inline style */
+    background-repeat: no-repeat; /* Inline style */
+  }
+  
+  .heading {
+    font-size: 3.75rem; /* Tailwind's text-6xl (60px) */
+    font-weight: 700; /* Tailwind's font-bold */
+    color: black; /* Tailwind's text-black */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-lg */
+    margin-bottom: 3rem; /* Tailwind's mb-12 */
+  }
+  
+  .button-group {
+    display: flex; /* Tailwind's flex */
+    flex-direction: column; /* Tailwind's flex-col */
+    gap: 1rem; /* Tailwind's gap-4 */
+  }
+  
+  .button {
+    padding: 0.75rem 1.5rem; /* Tailwind's px-6 py-3 */
+    font-size: 1.25rem; /* Tailwind's text-xl (20px) */
+    border-radius: 0.5rem; /* Tailwind's rounded-lg */
+    color: white; /* Tailwind's text-white */
+    cursor: pointer; /* Add pointer cursor for button */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+  }
+  
+  .button-blue {
+    background-color: #3b82f6; /* Tailwind's bg-blue-500 */
+  }
+  
+  .button-blue:hover {
+    background-color: #2563eb; /* Tailwind's hover:bg-blue-600 */
+  }
+  
+  .button-green {
+    background-color: #22c55e; /* Tailwind's bg-green-500 */
+  }
+  
+  .button-green:hover {
+    background-color: #16a34a; /* Tailwind's hover:bg-green-600 */
+  }
+  
+  .button-yellow {
+    background-color: #eab308; /* Tailwind's bg-yellow-500 */
+  }
+  
+  .button-yellow:hover {
+    background-color: #ca8a04; /* Tailwind's hover:bg-yellow-600 */
+  }
+  

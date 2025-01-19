@@ -1,39 +1,30 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/MainPage.css"; // CSS 파일 가져오기
 
 const MainPage = () => {
   const navigate = useNavigate();
 
   return (
-    <main
-      className="min-h-screen flex flex-col items-center justify-center gap-6"
-      style={{
-        backgroundImage: `url("/bonobonoface.jpg")`, // public 폴더 기준
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <h1 className="text-6xl font-bold text-black shadow-lg mb-12">
-        폰트 확인용 테스트 텍스트입니다
-      </h1>
+    <main className="main">
+      <h1 className="heading">폰트 확인용 테스트 텍스트입니다</h1>
 
-      <div className="flex flex-col gap-4">
+      <div className="button-group">
         <button
           onClick={() => navigate("/create-letter")}
-          className="px-6 py-3 bg-blue-500 text-white text-xl rounded-lg hover:bg-blue-600"
+          className="button button-blue"
         >
           편지 생성하러 가기
         </button>
         <button
           onClick={() => navigate("/my-fonts")}
-          className="px-6 py-3 bg-green-500 text-white text-xl rounded-lg hover:bg-green-600"
+          className="button button-green"
         >
           내 폰트 보러가기
         </button>
         <button
           onClick={() => navigate("/my-letters")}
-          className="px-6 py-3 bg-yellow-500 text-white text-xl rounded-lg hover:bg-yellow-600"
+          className="button button-yellow"
         >
           내 편지 보러가기
         </button>
