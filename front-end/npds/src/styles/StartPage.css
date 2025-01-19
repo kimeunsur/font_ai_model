@@ -1,0 +1,88 @@
+.start-page {
+    background-image: url("../styles/background.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+  }
+  
+  .bononukki-image {
+    position: fixed; /* 고정 위치 */
+    bottom: 0;       /* 화면의 하단에 붙임 */
+    left: 50%;       /* 화면의 가로 중앙으로 이동 */
+    transform: translateX(-70%); /* 이미지를 정확히 중앙에 위치시키기 위해 가로 축 보정 */
+    width: 350px;    /* 적절한 크기로 조정 (필요 시 수정 가능) */
+    height: auto;    /* 이미지 비율 유지 */
+    opacity: 70%;
+  }
+
+  .npds-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+    justify-content: space-between; /* 각 줄 간 균등한 간격 */
+    height: 100vh; /* 화면 높이를 차지 */
+    width: auto; /* 필요한 만큼만 너비 */
+  }
+  
+  .npds-row {
+    display: flex; /* 가로로 배치 */
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+  }
+  
+  .npds-text {
+    font-size: calc(25vh); /* 세로 사이즈에 비례 */
+    width: calc(25vh); /* 가로 사이즈도 세로와 동일하게 설정 */
+    height: calc(25vh); /* 세로와 동일한 크기 */
+    line-height: 1;
+    font-weight: bold;
+    color: black;
+    display: inline-flex; /* 요소를 inline flex로 변경하여 가로, 세로 비율을 맞춤 */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .npds-title {
+    position: absolute;
+    top: 25%; /* 화면의 1/4만큼 아래로 이동 */
+    right: 0; /* 화면 우측에 위치 */
+    font-size: calc(20vh); /* NPDS와 동일한 글자 크기 */
+    font-weight: bold;
+    color: black;
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+    text-align: right; /* 우측 정렬 */
+  }
+  
+  .npds-subtitle {
+    position: absolute;
+    top: 50%; /* npds-title 바로 아래로 배치 */
+    right: 0; /* 화면 우측에 위치 */
+    font-size: calc(9.8vh); /* 조금 더 작은 글자 크기 */
+    color: black;
+    text-align: right; /* 우측 정렬 */
+    font-weight: normal; /* 부제목이라서 굵기를 조금 더 부드럽게 설정 */
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+  }
+
+  .npds-button {
+    position: absolute;
+    top: 70%; /* npds-subtitle 바로 아래로 배치 */
+    right: 0; /* 화면 우측에 위치 */
+    transform: translateX(-30%);
+    background-color: #111111; /* 배경색 */
+    color: white; /* 글자색 */
+    font-size: calc(5vh); /* 버튼 크기 */
+    padding: 1rem 2rem;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+    transition: background-color 0.3s ease;
+  }
+  
+  .npds-button:hover {
+    background-color: #333333; /* 버튼 hover 시 색상 변경 */
+  }

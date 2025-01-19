@@ -84,9 +84,9 @@ const LoginModal = ({ isOpen, onClose, onSignUp, onLoginSuccess }) => {
         <div className="signup-container">
           <p>
             아직 회원이 아니신가요?{" "}
-            <button onClick={onSignUp} className="signup-link">
+            <span onClick={onSignUp} className="signup-link">
               가입하기
-            </button>
+            </span>
           </p>
         </div>
       </div>

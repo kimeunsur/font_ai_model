@@ -76,7 +76,7 @@ const SignUp = ({ isOpen, onClose, onLoginOpen }) => {
             required
           />
           {error && <p className="error-message">{error}</p>}
-          <button type="submit" className="submit-button">
+          <button type="submit" className="ssubmit-button">
             회원가입
           </button>
         </form>
@@ -85,7 +85,7 @@ const SignUp = ({ isOpen, onClose, onLoginOpen }) => {
         <div className="signup-footer">
           <p>
             이미 계정이 있으신가요?{" "}
-            <button
+            <span
               onClick={() => {
                 onClose(); // 회원가입 모달 닫기
                 onLoginOpen(); // 로그인 모달 열기
@@ -93,7 +93,7 @@ const SignUp = ({ isOpen, onClose, onLoginOpen }) => {
               className="login-link"
             >
               로그인
-            </button>
+            </span>
           </p>
         </div>
       </div>
