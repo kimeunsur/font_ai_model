@@ -1,37 +1,31 @@
 package com.example.npds.entity;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "users")
+@Document(collection = "users") // MongoDB 컬렉션 이름 매핑
 @Getter
 @Setter
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id; // MongoDB의 ID는 String 타입으로 사용
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
     private String password;
 
-    
     @Override
     public String toString() {
         return "User{" +
-        "id=" + id +
-        ", name='" + name + '\'' +
-        ", email=" + email + '\'' +
-        '}';
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
-
 }

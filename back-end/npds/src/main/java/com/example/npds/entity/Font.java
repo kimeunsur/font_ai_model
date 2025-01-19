@@ -5,25 +5,29 @@ import java.time.LocalDateTime;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection = "font")
 @Getter
 @Setter
 public class Font {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id; // MongoDB의 ID는 String 타입(ObjectId)으로 매핑됩니다.
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String userId; // 관계형 데이터 대신 사용자 ID를 문자열로 저장
 
-    @Column(nullable = false)
     private byte[] fontFile;
 
-    @Column(nullable = false)
     private String fontName;
 
-    @Column(nullable = true, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
+    private User user; // Add this field
+
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
+

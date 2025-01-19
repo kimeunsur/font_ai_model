@@ -2,25 +2,21 @@ package com.example.npds.entity;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection = "letter") // MongoDB 컬렉션 이름 지정
 @Getter
 @Setter
 public class Letter {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id; // MongoDB의 ID는 String 타입 사용 (ObjectId 매핑)
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String userId; // User 엔티티 참조 대신 userId 문자열로 저장
 
-    @Column(nullable = false)
     private String content;
 
-    @Column(nullable = false, updatable = false)
     private LocalDateTime addedAt = LocalDateTime.now();
 }

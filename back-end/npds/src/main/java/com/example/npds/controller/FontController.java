@@ -35,7 +35,7 @@ public class FontController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<FontDto> getFontByUserId(@PathVariable Long userId) {
+    public List<FontDto> getFontByUserId(@PathVariable String userId) {
         return fontService.getFontByUserId(userId).stream()
             .map(font -> new FontDto(
                 font.getId(),
@@ -49,7 +49,7 @@ public class FontController {
     
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFont(
-        @RequestParam("userId") Long userId,
+        @RequestParam("userId") String userId,
         @RequestParam("fontName") String fontName,
         @RequestParam("fontFile") MultipartFile fontFile) {
         try {
