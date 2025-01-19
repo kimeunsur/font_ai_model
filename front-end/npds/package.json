@@ -9,17 +9,14 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^8.17.1",
-    "autoprefixer": "^10.4.20",
     "axios": "^1.7.9",
     "clsx": "^2.1.1",
     "http-proxy-middleware": "^3.0.3",
     "npds": "file:",
-    "postcss": "^8.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.3",
     "react-scripts": "5.0.1",
-    "tailwindcss": "^3.4.17",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
