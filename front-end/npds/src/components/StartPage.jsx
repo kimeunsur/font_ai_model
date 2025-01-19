@@ -31,21 +31,6 @@ const StartPage = () => {
   };
 
   return (
-    // <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-100 via-yellow-100 to-blue-100">
-    //   <div className="text-center">
-    //     <h1 className="text-6xl font-bold mb-8">
-    //       니편대써: 니 편지 대충 써줌(NPDS)
-    //       <br />
-    //       "뭐, 대충 해줄 테니까 감성 그런 거 기대하지 마"
-    //     </h1>
-    //     <button
-    //       onClick={openLoginModal}
-    //       className="text-5xl py-6 px-12 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-    //     >
-    //       시작하기
-    //     </button>
-    //   </div>
-
     <div
       style={{
         backgroundImage: `url(${background})`, // 이미지 경로를 동적으로 지정
