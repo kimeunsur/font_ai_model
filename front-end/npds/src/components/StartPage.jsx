@@ -54,6 +54,7 @@ const StartPage = () => {
         minHeight: "100vh",
       }}
     >
+      
       <div className="absolute w-[436px] h-[1054px] -top-4 left-0">
         <div className="absolute w-[170px] h-[1024px] top-[15px] left-0 [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[220px] text-center tracking-[0] leading-[normal]">
           N<br />P<br />D<br />S
