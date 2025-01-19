@@ -22,7 +22,7 @@ public class LetterController {
     private LetterService letterService;
 
     @GetMapping("/user/{userId}")
-    public List<Letter> getLetterByUserId(@PathVariable Long userId) {
+    public List<Letter> getLetterByUserId(@PathVariable String userId) {
         return letterService.getLetterByUserId(userId);
     }
  

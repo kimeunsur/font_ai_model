@@ -3,12 +3,12 @@ package com.example.npds.entity;
 import java.time.LocalDateTime;
 
 public class FontDto {
-    private Long id;
+    private String id; // MongoDB의 ID는 String으로 사용
     private String fontName;
     private String fontFile; // Base64로 인코딩된 폰트 파일
     private LocalDateTime createdAt;
 
-    public FontDto(Long id, String fontName, String fontFile, LocalDateTime createdAt) {
+    public FontDto(String id, String fontName, String fontFile, LocalDateTime createdAt) {
         this.id = id;
         this.fontName = fontName;
         this.fontFile = fontFile;
@@ -16,11 +16,11 @@ public class FontDto {
     }
 
     // Getter와 Setter
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -13,7 +13,7 @@ public class LetterService {
     @Autowired
     private LetterRepository letterRepository;
 
-    public List<Letter> getLetterByUserId(Long userId) {
+    public List<Letter> getLetterByUserId(String userId) {
         return letterRepository.findByUserId(userId);
     }
 

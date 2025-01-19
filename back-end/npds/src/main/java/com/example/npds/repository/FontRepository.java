@@ -2,9 +2,10 @@ package com.example.npds.repository;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
 import com.example.npds.entity.Font;
 
-public interface FontRepository extends JpaRepository<Font, Long>{
-    List<Font> findByUserId(Long userId);
+public interface FontRepository extends MongoRepository<Font, String>{
+    List<Font> findByUserId(String userId);
 }
