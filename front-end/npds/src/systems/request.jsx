@@ -1,7 +1,7 @@
 import axios from "axios";
 const BASE_URL = "http://localhost:8080";
 
-//get 요청; 유저 로그인
+//get 요청; 유저 로그인 → 밑에는 post인데?
 export const loginUser = async (email, password) => {
     try {
         const response = await axios.post(
