@@ -1,13 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/CreateLetter.css"; // CSS 파일을 가져옵니다.
 
 const CreateLetter = () => {
   const [gptInput, setGptInput] = useState("");
   const [textToImageInput, setTextToImageInput] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     console.log("GPT Input:", gptInput);
     console.log("Text-to-Image Input:", textToImageInput);
+    const requestData = {
+      gptInput,
+      textToImageInput,
+    };navigate("/create-letter-2", {state: requestData});
   };
 
   return (
@@ -25,7 +31,7 @@ const CreateLetter = () => {
             type="text"
             id="gptInput"
             className="text-input"
-            placeholder="GPT로부터 받을 내용을 입력하세요"
+            placeholder="무물보~"
             value={gptInput}
             onChange={(e) => setGptInput(e.target.value)}
           />
@@ -39,7 +45,7 @@ const CreateLetter = () => {
             type="text"
             id="textToImageInput"
             className="text-input"
-            placeholder="배경 이미지를 위한 텍스트를 입력하세요"
+            placeholder="무물보~"
             value={textToImageInput}
             onChange={(e) => setTextToImageInput(e.target.value)}
           />
