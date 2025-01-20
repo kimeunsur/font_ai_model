@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { loginUser } from "../systems/request";
+import { useUser } from "../UserContext";
 import "../styles/LoginModal.css";
 import kakaotalkLogo1 from "../styles/KakaoTalk_logo.svg";
 import closeX from "../styles/close-x.svg";
@@ -9,6 +10,7 @@ const LoginModal = ({ isOpen, onClose, onSignUp, onLoginSuccess }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { loginUser: setUser } = useUser();
 
   if (!isOpen) return null;
 
@@ -19,6 +21,7 @@ const LoginModal = ({ isOpen, onClose, onSignUp, onLoginSuccess }) => {
     try {
       const data = await loginUser(email, password);
       console.log("로그인 성공:", data);
+      setUser(data);
       if (onLoginSuccess) onLoginSuccess(data);
     } catch (error) {
       console.error("로그인 실패:", error);
@@ -84,9 +87,9 @@ const LoginModal = ({ isOpen, onClose, onSignUp, onLoginSuccess }) => {
         <div className="signup-container">
           <p>
             아직 회원이 아니신가요?{" "}
-            <button onClick={onSignUp} className="signup-link">
+            <span onClick={onSignUp} className="signup-link">
               가입하기
-            </button>
+            </span>
           </p>
         </div>
       </div>

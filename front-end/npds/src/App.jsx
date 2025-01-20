@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { UserProvider } from "./UserContext";
 import StartPage from "./components/StartPage";
 import LoginModal from "./components/LoginModal";
 import MainPage from "./components/MainPage";
@@ -9,14 +10,16 @@ import MyLetters from "./components/MyLetters";
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<StartPage />} />
-      <Route path="/loginpage" element={<LoginModal />} />
-      <Route path="/main" element={<MainPage />} />
-      <Route path="/create-letter" element={<CreateLetter />} />
-      <Route path="/my-fonts" element={<MyFonts />} />
-      <Route path="/my-letters" element={<MyLetters />} />
-    </Routes>
+    <UserProvider>
+      <Routes>
+        <Route path="/" element={<StartPage />} />
+        <Route path="/loginpage" element={<LoginModal />} />
+        <Route path="/main" element={<MainPage />} />
+        <Route path="/create-letter" element={<CreateLetter />} />
+        <Route path="/my-fonts" element={<MyFonts />} />
+        <Route path="/my-letters" element={<MyLetters />} />
+      </Routes>
+    </UserProvider>
   );
 };
 

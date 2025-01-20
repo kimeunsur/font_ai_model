@@ -34,27 +34,27 @@ const SignUp = ({ isOpen, onClose, onLoginOpen }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-container">
+    <div className="smodal-overlay">
+      <div className="smodal-container">
         {/* 닫기 버튼 */}
-        <button onClick={onClose} className="close-button">
-          <img className="close-icon" alt="close x" src={closeX} />
+        <button onClick={onClose} className="sclose-button">
+          <img className="sclose-icon" alt="close x" src={closeX} />
         </button>
 
         {/* 헤더 */}
-        <div className="modal-header">
-          <h2 className="modal-title">회원가입</h2>
+        <div className="smodal-header">
+          <h2 className="smodal-title">회원가입</h2>
         </div>
 
         {/* 폼 */}
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="sform" onSubmit={handleSubmit}>
           <input
             id="name"
             type="text"
             placeholder="이름을 입력하세요"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="input-field"
+            className="sinput-field"
             required
           />
           <input
@@ -63,7 +63,7 @@ const SignUp = ({ isOpen, onClose, onLoginOpen }) => {
             placeholder="메일 주소를 입력하세요"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="input-field"
+            className="sinput-field"
             required
           />
           <input
@@ -72,28 +72,28 @@ const SignUp = ({ isOpen, onClose, onLoginOpen }) => {
             placeholder="비밀번호를 입력하세요"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="input-field"
+            className="sinput-field"
             required
           />
-          {error && <p className="error-message">{error}</p>}
-          <button type="submit" className="submit-button">
+          {error && <p className="serror-message">{error}</p>}
+          <button type="submit" className="ssubmit-button">
             회원가입
           </button>
         </form>
 
         {/* 하단 링크 */}
-        <div className="signup-footer">
+        <div className="ssignup-footer">
           <p>
             이미 계정이 있으신가요?{" "}
-            <button
+            <span
               onClick={() => {
                 onClose(); // 회원가입 모달 닫기
                 onLoginOpen(); // 로그인 모달 열기
               }}
-              className="login-link"
+              className="slogin-link"
             >
               로그인
-            </button>
+            </span>
           </p>
         </div>
       </div>
