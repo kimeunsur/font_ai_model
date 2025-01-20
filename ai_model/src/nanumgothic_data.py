@@ -21,10 +21,10 @@ if not text:
 
 
 for char in text:
-    img = Image.new("L", (256,256), color = 255)
+    img = Image.new("L", (128,128), color = 255)
     draw = ImageDraw.Draw(img)
     try:
-        font = ImageFont.truetype(font_file, 200)  # 폰트 설정
+        font = ImageFont.truetype(font_file, 100)  # 폰트 설정
     except OSError as e:
         print(f"error loading font {font_file}: {e}")
         continue
@@ -33,6 +33,6 @@ for char in text:
     bbox = font.getbbox(char)  # (xmin, ymin, xmax, ymax) 반환
     text_width = bbox[2] - bbox[0]
     text_height = bbox[3] - bbox[1]
-    position = ((256 - text_width) // 2, (256 - text_height) // 2)
+    position = ((128 - text_width) // 2, (128 - text_height) // 2)
     draw.text(position, char, fill=0, font=font)  # 문자 그리기
     img.save(f"{output_dir}/{char}.png")  # 저장
