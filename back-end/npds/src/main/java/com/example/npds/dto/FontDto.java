@@ -1,4 +1,4 @@
-package com.example.npds.entity;
+package com.example.npds.dto;
 
 import java.time.LocalDateTime;
 
