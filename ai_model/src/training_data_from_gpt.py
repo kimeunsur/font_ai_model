@@ -12,8 +12,10 @@ def augment_image(image):
     rotated = rotated.astype(np.int16)
     noisy_image = np.clip(rotated + noise, 0, 255).astype(np.uint8)  # clip 사용
     
-    pts1 = np.float32([[5, 5], [120, 5], [5, 120]])
-    pts2 = np.float32([[10, 15], [115, 5], [15, 125]])
+    offset = 10
+    pts1 = np.float32([[0, 0], [w - 1, 0], [0, h - 1]])
+    pts2 = np.float32([[0 + offset, 0 + offset], [w - 1 - offset, 0], [0, h - 1 - offset]])
+
     M = cv2.getAffineTransform(pts1, pts2)
     distorted = cv2.warpAffine(noisy_image, M, (w, h), borderValue=255)
 
@@ -90,5 +92,6 @@ for font_index, font_file in enumerate(font_files):
         
         augmented_img = augment_image(img_np)
         augmented_img = Image.fromarray(augmented_img)
-        augmented_img.save(save_path)
+        augmented_save_path = os.path.join(font_output_dir, f"augmented_img_{char_index}.png")
+        augmented_img.save(augmented_save_path)
 print("All images generated successfully.")
