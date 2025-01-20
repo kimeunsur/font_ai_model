@@ -21,8 +21,8 @@ public class GptApiClient {
 
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
     // .env 파일에서 API 키 읽기
-    private static final Dotenv dotenv = Dotenv.load();
-    private static final String GPT_API_KEY = dotenv.get("GPT_API_KEY");
+
+    
     private final WebClient webClient;
 
     public GptApiClient(WebClient webClient) {
