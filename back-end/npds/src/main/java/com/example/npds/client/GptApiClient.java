@@ -20,7 +20,6 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class GptApiClient {
 
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
-    // .env 파일에서 API 키 읽기
 
     
     private final WebClient webClient;
@@ -38,14 +37,14 @@ public class GptApiClient {
         try {
             List<GptRequest.Message> messages = List.of(
                 new GptRequest.Message("system", "You are a helpful assistant."),
-                new GptRequest.Message("user", "Generate 3 responses for the following question: " + question)
+                new GptRequest.Message("user", "Generate 3 responses (minimum 200 tokens per response/no english) for the following question: " + question)
             );
             
             
             GptRequest request = new GptRequest(
                 "gpt-3.5-turbo",
                 messages,
-                150,
+                4000,
                 0.7
             );
             // API 호출
@@ -83,6 +82,7 @@ public class GptApiClient {
             if (response != null && response.getChoices() != null) {
                 return response.getChoices().stream()
                         .map(choice -> choice.getMessage().getContent())
+                        .flatMap(content -> Stream.of(content.split("\\n\\n"))) // 두 줄 바꿈을 기준으로 나눔
                         .collect(Collectors.toList());
             }
         } catch (Exception e) {

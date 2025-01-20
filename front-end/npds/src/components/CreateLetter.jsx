@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/CreateLetter.css"; // CSS 파일을 가져옵니다.
+import { GptResponse } from "../systems/request";
 
 const CreateLetter = () => {
   const [gptInput, setGptInput] = useState("");
   const [textToImageInput, setTextToImageInput] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log("GPT Input:", gptInput);
     console.log("Text-to-Image Input:", textToImageInput);
+    const question = gptInput;
+    const gptResponse = await GptResponse(question);
+    console.log("gpt 답변 가져오기 성공~: ", gptResponse);
     const requestData = {
-      gptInput,
+      gptResponse,
       textToImageInput,
     };navigate("/create-letter-2", {state: requestData});
   };
@@ -34,6 +38,7 @@ const CreateLetter = () => {
             placeholder="무물보~"
             value={gptInput}
             onChange={(e) => setGptInput(e.target.value)}
+            required
           />
         </div>
 
