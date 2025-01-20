@@ -1,5 +1,5 @@
 /* Modal Overlay */
-.modal-overlay {
+  .smodal-overlay {
     position: fixed;
     inset: 0;
     display: flex;
@@ -10,7 +10,7 @@
   }
   
   /* Modal Container */
-  .modal-container {
+  .smodal-container {
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -21,7 +21,7 @@
   }
   
   /* Close Button */
-  .close-button {
+  .sclose-button {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -30,47 +30,48 @@
     cursor: pointer;
   }
   
-  .close-icon {
+  .sclose-icon {
     width: 1.5rem;
     height: 1.5rem;
   }
   
   /* Modal Header */
-  .modal-header {
+  .smodal-header {
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
   }
   
-  .modal-title {
+  .smodal-title {
     font-size: 1.5rem;
     font-weight: bold;
     color: #333333;
   }
   
   /* Form */
-  .form {
+  .sform {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
   
-  .input-field {
+  .sinput-field {
     width: 100%;
     padding: 0.5rem 0.75rem;
     border: 1px solid #d1d5db;
     border-radius: 0.375rem;
+    box-sizing: border-box;
   }
   
-  .error-message {
+  .serror-message {
     color: #ef4444;
     font-size: 0.875rem;
   }
   
   /* Submit Button */
-  .submit-button {
+  .ssubmit-button {
     width: 100%;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     background-color: #10b981;
     color: white;
     border: none;
@@ -80,23 +81,23 @@
     transition: background-color 0.2s ease;
   }
   
-  .submit-button:hover {
+  .ssubmit-button:hover {
     background-color: #059669;
   }
   
   /* Signup Footer */
-  .signup-footer {
+  .ssignup-footer {
     text-align: center;
     margin-top: 1.5rem;
   }
   
-  .login-link {
+  .slogin-link {
     color: #3b82f6;
     text-decoration: underline;
     cursor: pointer;
   }
   
-  .login-link:hover {
+  .slogin-link:hover {
     color: #2563eb;
   }
   
