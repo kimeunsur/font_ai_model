@@ -21,6 +21,7 @@ public class AnswerController {
 
     @PostMapping
     public List<String> generateAnswers(@RequestBody QuestionDto questionDto) {
+        System.out.println("Received question: " + questionDto.getQuestion());
         return answerService.generateAnswers(questionDto.getQuestion());
     }
 }

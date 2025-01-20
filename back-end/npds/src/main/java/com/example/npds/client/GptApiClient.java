@@ -35,8 +35,6 @@ public class GptApiClient {
             question = "Please provide a valid question.";  // 기본 질문
         }
 
-        System.out.println("Modified question: " + question); // 변경된 question 확인
-
         try {
             List<GptRequest.Message> messages = List.of(
                 new GptRequest.Message("system", "You are a helpful assistant."),
@@ -78,18 +76,13 @@ public class GptApiClient {
                     )
                     .bodyToMono(GptResponse.class)
                     .doOnNext(resp -> {
-                        try {
-                            String rawResponse = mapper.writeValueAsString(resp);
-                            System.out.println("Raw Response JSON: " + rawResponse);
-                        } catch (Exception e) {
-                            System.err.println("Error serializing response: " + e.getMessage());
-                        }
+                        System.out.println("GPT API Response: " + resp);
                     })
                     .block();
             // 응답 파싱
             if (response != null && response.getChoices() != null) {
                 return response.getChoices().stream()
-                        .map(GptChoice::getText)
+                        .map(choice -> choice.getMessage().getContent())
                         .collect(Collectors.toList());
             }
         } catch (Exception e) {
