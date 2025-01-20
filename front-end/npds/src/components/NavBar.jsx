@@ -12,9 +12,13 @@ const NavBar = () => {
     navigate("/");
   };
 
+  const navigateToMainPage = () => {
+    navigate("/main"); // MainPage로 리디렉션
+  };
+
   return (
     <nav className="navbar">
-      <div className="navbar-left">
+      <div className="navbar-left" onClick={navigateToMainPage}>
         <h1>NPDS</h1>
       </div>
       <div className="navbar-right">
