@@ -1,13 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../UserContext";
 import "../styles/MainPage.css"; // CSS 파일 가져오기
 
 const MainPage = () => {
+  const { user } = useUser();
   const navigate = useNavigate();
 
   return (
     <main className="main">
-      <h1 className="heading">폰트 확인용 테스트 텍스트입니다</h1>
+      <h1 className="heading">
+        {user ? `${user.name} ${user.email}님, 안녕하세요!` : "로그인하고 들어오셈"}
+      </h1>
 
       <div className="button-group">
         <button
