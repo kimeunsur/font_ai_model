@@ -4,14 +4,23 @@ import { useUser } from "../UserContext";
 import "../styles/MainPage.css"; // CSS 파일 가져오기
 
 const MainPage = () => {
-  const { user } = useUser();
+  const { user, logoutUser } = useUser();
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logoutUser();
+    navigate("/");
+  };
 
   return (
     <main className="main">
       <h1 className="heading">
         {user ? `${user.name} ${user.email}님, 안녕하세요!` : "로그인하고 들어오셈"}
       </h1>
+
+      <p className="logout-text" onClick={handleLogout}>
+          로그아웃할거면 하든가
+      </p>
 
       <div className="button-group">
         <button

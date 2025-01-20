@@ -76,7 +76,7 @@ const SignUp = ({ isOpen, onClose, onLoginOpen }) => {
             required
           />
           {error && <p className="error-message">{error}</p>}
-          <button type="submit" className="ssubmit-button">
+          <button type="submit" className="submit-button">
             회원가입
           </button>
         </form>

@@ -20,6 +20,13 @@
     margin-bottom: 3rem; /* Tailwind's mb-12 */
   }
   
+  .logout-text {
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+  }  
+
   .button-group {
     display: flex; /* Tailwind's flex */
     flex-direction: column; /* Tailwind's flex-col */
