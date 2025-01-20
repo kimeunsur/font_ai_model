@@ -25,52 +25,66 @@ public class GptApiClient {
     private static final String GPT_API_KEY = dotenv.get("GPT_API_KEY");
     private final WebClient webClient;
 
-    public GptApiClient() {
-        Dotenv dotenv = Dotenv.load();
-        String GPT_API_KEY = dotenv.get("GPT_API_KEY");
-        if (GPT_API_KEY == null || GPT_API_KEY.isEmpty()) {
-            throw new RuntimeException("GPT_API_KEY가 설정되지 않았습니다.");
-        }
-        this.webClient = WebClient.builder()
-                .baseUrl(API_URL)
-                .defaultHeader("Authorization", "Bearer " + GPT_API_KEY)
-                .defaultHeader("Content-Type", "application/json")
-                .build();
+    public GptApiClient(WebClient webClient) {
+        this.webClient = webClient;
     }
 
     
     public List<String> getAnswers(String question) {
+        if (question == null || question.trim().isEmpty()) {
+            question = "Please provide a valid question.";  // 기본 질문
+        }
+
+        System.out.println("Modified question: " + question); // 변경된 question 확인
+
         try {
-            // 요청 생성
-            List<Map<String, String>> messages = List.of(
-                Map.of("role", "system", "content", "You are a helpful assistant."),
-                Map.of("role", "user", "content", "Generate 3 responses for the following question: " + question)
+            List<GptRequest.Message> messages = List.of(
+                new GptRequest.Message("system", "You are a helpful assistant."),
+                new GptRequest.Message("user", "Generate 3 responses for the following question: " + question)
             );
+            
             
             GptRequest request = new GptRequest(
                 "gpt-3.5-turbo",
                 messages,
-                100,
+                150,
                 0.7
             );
             // API 호출
-
-                    // 요청 JSON 출력
             ObjectMapper mapper = new ObjectMapper();
-            String requestJson = mapper.writeValueAsString(request);
-            System.out.println("Request JSON: " + requestJson);
-
+            try {
+                String requestJson = mapper.writeValueAsString(request);
+                System.out.println("Request 제발 되라 JSON: " + requestJson);
+            } catch (Exception e) {
+                System.err.println("Error serializing request: " + e.getMessage());
+            }
+            
             GptResponse response = webClient.post()
                     .bodyValue(request)
                     .retrieve()
                     .onStatus(
-                        status -> status.is4xxClientError() || status.is5xxServerError(),
+                        status -> status.is4xxClientError(),
                         clientResponse -> {
-                            System.err.println("Error Status Code: " + clientResponse.statusCode());
-                            return Mono.error(new RuntimeException("GPT API returned an error."));
+                            return clientResponse.bodyToMono(String.class)
+                                .flatMap(errorBody -> {
+                                    System.err.println("Error response body: " + errorBody);
+                                    return Mono.error(new RuntimeException("GPT API returned an error: " + errorBody));
+                                });
                         }
+                    )                    
+                    .onStatus(
+                        status -> status.is5xxServerError(),
+                        clientResponse -> Mono.error(new RuntimeException("5xx Server Error"))
                     )
                     .bodyToMono(GptResponse.class)
+                    .doOnNext(resp -> {
+                        try {
+                            String rawResponse = mapper.writeValueAsString(resp);
+                            System.out.println("Raw Response JSON: " + rawResponse);
+                        } catch (Exception e) {
+                            System.err.println("Error serializing response: " + e.getMessage());
+                        }
+                    })
                     .block();
             // 응답 파싱
             if (response != null && response.getChoices() != null) {

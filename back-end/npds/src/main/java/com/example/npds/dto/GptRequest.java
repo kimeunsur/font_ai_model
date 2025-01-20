@@ -7,21 +7,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GptRequest {
     private String model;
-    private List<Map<String, String>> messages;
+    private List<Message> messages;
     private int maxTokens;
     private double temperature;
 
-    public GptRequest() {}
-
-    public GptRequest(String model, List<Map<String, String>> message, int maxTokens, double temperature) {
+    public GptRequest(String model, List<Message> messages, int maxTokens, double temperature) {
         this.model = model;
         this.messages = messages;
         this.maxTokens = maxTokens;
         this.temperature = temperature;
     }
 
-
-    @JsonProperty("model") // JSON 키 매핑
+    @JsonProperty("model")
     public String getModel() {
         return model;
     }
@@ -30,11 +27,11 @@ public class GptRequest {
         this.model = model;
     }
 
-    public List<Map<String, String>> getMessages() {
+    public List<Message> getMessages() {
         return messages;
     }
 
-    public void setMessages(List<Map<String, String>> messages) {
+    public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
 
@@ -55,5 +52,32 @@ public class GptRequest {
     public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
-}
 
+    public static class Message {
+        private String role;
+        private String content;
+
+        public Message(String role, String content) {
+            this.role = role;
+            this.content = content;
+        }
+
+        @JsonProperty("role")
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+
+        @JsonProperty("content")
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+    }
+}

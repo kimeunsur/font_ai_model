@@ -16,6 +16,7 @@ public class AnswerService {
     }
 
     public List<String> generateAnswers(String question) {
+        // GptApiClient의 getAnswers 호출
         return gptApiClient.getAnswers(question);
     }
 }
