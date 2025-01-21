@@ -8,6 +8,7 @@ import CreateLetter from "./components/CreateLetter";
 import CreateLetter2 from "./components/CreateLetter2";
 import MyFonts from "./components/MyFonts";
 import CreateFont from "./components/CreateFont";
+import CreateFont2 from "./components/CreateFont2";
 import MyLetters from "./components/MyLetters";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/create-letter-2" element={<CreateLetter2 />} />
           <Route path="/my-fonts" element={<MyFonts />} />
           <Route path="/create-font" element={<CreateFont />} />
+          <Route path="/create-font2" element={<CreateFont2 />} />
           <Route path="/my-letters" element={<MyLetters />} />
         </Route>
       </Routes>
