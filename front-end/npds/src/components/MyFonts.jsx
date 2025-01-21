@@ -24,6 +24,7 @@ const MyFonts = () => {
           </div>
         ))}
       </div>
+      <button> 폰트 생성하기 </button>
     </main>
   );
 };
