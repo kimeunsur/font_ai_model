@@ -57,6 +57,22 @@
   margin-bottom: 5px;
 }
 
+.image-container {
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  gap: 10px; /* 각 이미지 간격 */
+  justify-content: flex-start; /* 상단 정렬 */
+  margin-top: 10px;
+}
+
+.output-image {
+  width: 100%; /* 컨테이너 너비를 꽉 채움 */
+  height: auto; /* 이미지 비율 유지 */
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
 .output-group:last-child {
   display: flex;
   flex-direction: column;
