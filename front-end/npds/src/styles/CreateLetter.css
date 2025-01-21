@@ -4,7 +4,7 @@
     display: flex; /* Tailwind's flex */
     align-items: center; /* Tailwind's items-center */
     justify-content: center; /* Tailwind's justify-center */
-    background-image: url("./background.jpg"); /* 이미지 URL */
+    background-image: url("./background.png"); /* 이미지 URL */
     background-size: cover; /* Tailwind's backgroundSize: cover */
     background-position: center; /* Tailwind's backgroundPosition: center */
     background-repeat: no-repeat; /* Tailwind's backgroundRepeat: no-repeat */

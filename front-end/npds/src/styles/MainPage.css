@@ -1,23 +1,54 @@
 /* styles/MainPage.css */
-.main {
-    min-height: 100vh; /* Tailwind's min-h-screen */
-    display: flex; /* Tailwind's flex */
-    flex-direction: column; /* Tailwind's flex-col */
-    align-items: center; /* Tailwind's items-center */
-    justify-content: center; /* Tailwind's justify-center */
-    gap: 1.5rem; /* Tailwind's gap-6 */
-    background-image: url("./background.jpg"); /* Inline style */
-    background-size: cover; /* Inline style */
-    background-position: center; /* Inline style */
-    background-repeat: no-repeat; /* Inline style */
+.mmain {
+  min-height: 100vh; /* Tailwind's min-h-screen */
+  display: flex; /* Tailwind's flex */
+  flex-direction: row; /* Tailwind's flex-col */
+  align-items: flex-start; /* Tailwind's items-center */
+  justify-content: space-between; /* Tailwind's justify-center */
+  gap: 1.5rem; /* Tailwind's gap-6 */
+  background-image: url("./background.png"); /* Inline style */
+  background-size: cover; /* Inline style */
+  background-position: center; /* Inline style */
+  background-repeat: no-repeat; /* Inline style */
+}
+
+.heading-box {
+  width: 50%; /* 너비를 50%로 설정 */
+  height: 80vh; /* 높이 설정 */
+  overflow-y: auto; /* 내용이 넘칠 경우 스크롤 */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px; /* 전체 모서리를 둥글게 */
+  background-color: rgba(255, 255, 255, 0.4);
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+  
+  .hheading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    margin: 0px;
   }
   
-  .heading {
-    font-size: 3.75rem; /* Tailwind's text-6xl (60px) */
-    font-weight: 700; /* Tailwind's font-bold */
-    color: black; /* Tailwind's text-black */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-lg */
-    margin-bottom: 3rem; /* Tailwind's mb-12 */
+  .description {
+    font-size: 1rem;
+    line-height: 2;
+    color: #555;
+    text-align: left;
+  }
+  
+  .description .highlight {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .description .signature {
+    display: block;
+    margin-top: 20px;
+    font-style: italic;
+    color: #888;
   }
   
   .logout-text {
@@ -28,9 +59,14 @@
   }  
 
   .button-group {
-    display: flex; /* Tailwind's flex */
-    flex-direction: column; /* Tailwind's flex-col */
-    gap: 1rem; /* Tailwind's gap-4 */
+    display: flex;
+    flex-direction: column; /* 버튼을 세로로 배치 */
+    gap: 20px; /* 버튼 간 간격 */
+    align-items: center; /* 버튼을 왼쪽 정렬 */
+    justify-content: center;
+    width: 30%; /* 너비 설정 */
+    height: 80vh; /* 높이 설정 */
+    padding: 20px;
   }
   
   .button {
