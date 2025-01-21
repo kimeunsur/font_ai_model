@@ -1,6 +1,15 @@
+:root {
+  --text-color: #000; /* 기본 텍스트 색상 */
+}
+
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow: hidden;
+    color: var(--text-color) !important;
   }
+
+body * {
+  color: inherit !important;
+}

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/NavBar.css";
 
 const NavBar = () => {
-  const { user, logoutUser } = useUser();
+  const { user, logoutUser } = useUser();  
   const navigate = useNavigate();
 
   const [buttonColor, setButtonColor] = useState("#ffffff"); // 버튼 색상
@@ -32,6 +32,7 @@ const NavBar = () => {
       setTrackingColor(true); // 색상 추적 시작
       const result = await eyeDropper.open();
       setButtonColor(result.sRGBHex); // 선택된 색상 설정
+      document.documentElement.style.setProperty("--text-color", result.sRGBHex);
     } catch (err) {
       console.error("색상 선택 취소 또는 오류:", err);
     } finally {
