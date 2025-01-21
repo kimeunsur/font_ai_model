@@ -2,17 +2,10 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/CreateLetter2.css";
 
-// 이미지 경로를 불러옵니다.
-import letterBackground111 from "../data/letterbackground111.jpg";
-import letterBackground222 from "../data/letterbackground222.jpg";
-import letterBackground333 from "../data/letterbackground333.jpg";
 
 const CreateLetter2 = () => {
   const location = useLocation();
-  const { gptResponse, textToImageInput } = location.state || {};
-
-  // 이미지 배열
-  const images = [letterBackground111, letterBackground222, letterBackground333];
+  const { gptResponse, imageResponse } = location.state || {};
 
   // 상태 관리
   const [selectedText, setSelectedText] = useState(""); // 선택된 텍스트
@@ -43,15 +36,19 @@ const CreateLetter2 = () => {
         <div className="output-group">
           <label className="output-label">Text-to-Image Output:</label>
           <div className="image-container">
-            {images.map((image, index) => (
+            {imageResponse && imageResponse.length > 0 ? (
+              imageResponse.map((image, index) => (
               <img
                 key={index}
                 src={image}
                 alt={`Generated Background ${index + 1}`}
                 className={`output-image ${selectedImage === image ? "selected" : ""}`}
                 onClick={() => setSelectedImage(image)}
-              />
-            ))}
+              />                
+              ))
+            ) : (
+              <p>데이터 없음</p>
+            )}
           </div>
         </div>
 
