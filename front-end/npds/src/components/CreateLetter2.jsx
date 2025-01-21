@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/CreateLetter2.css";
 
@@ -14,17 +14,25 @@ const CreateLetter2 = () => {
   // 이미지 배열
   const images = [letterBackground111, letterBackground222, letterBackground333];
 
+  // 상태 관리
+  const [selectedText, setSelectedText] = useState(""); // 선택된 텍스트
+  const [selectedImage, setSelectedImage] = useState(null); // 선택된 이미지
+
   return (
     <main className="main">
-      <h1 className="heading">대충 생성된 편지</h1>
-
       <div className="output-section">
         {/* 첫 번째 그룹 */}
         <div className="output-group">
           <label className="output-label">GPT 생성 답변</label>
           {gptResponse && gptResponse.length > 0 ? (
             gptResponse.map((response, index) => (
-              <p key={index} className="output-text">{`${index + 1}. ${response}`}</p>
+              <p
+                key={index}
+                className={`output-text ${selectedText === response ? "selected" : ""}`}
+                onClick={() => setSelectedText(response)}
+              >
+                {`${response}`}
+              </p>
             ))
           ) : (
             <p className="output-text">데이터 없음</p>
@@ -40,7 +48,8 @@ const CreateLetter2 = () => {
                 key={index}
                 src={image}
                 alt={`Generated Background ${index + 1}`}
-                className="output-image"
+                className={`output-image ${selectedImage === image ? "selected" : ""}`}
+                onClick={() => setSelectedImage(image)}
               />
             ))}
           </div>
@@ -48,10 +57,22 @@ const CreateLetter2 = () => {
 
         {/* 세 번째 그룹 */}
         <div className="output-group">
-          <label className="output-label">Input Zzamppong:</label>
-          <p className="output-text">
-            {textToImageInput || "데이터 없음"} 이랑 {textToImageInput || "데이터 없음"}
-          </p>
+          <label className="output-label">Preview & Edit:</label>
+          <div
+            className="preview-container"
+            style={{
+              backgroundImage: `url(${selectedImage})`,
+              height: "400px",
+              position: "relative",
+            }}
+          >
+            <textarea
+              className="editable-text"
+              value={selectedText}
+              onChange={(e) => setSelectedText(e.target.value)}
+              placeholder="텍스트를 입력하거나 선택하세요"
+            />
+          </div>
         </div>
       </div>
     </main>
