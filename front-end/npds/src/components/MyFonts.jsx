@@ -14,7 +14,7 @@ const MyFonts = () => {
 
   return (
     <main className="main">
-      <h1 className="heading">나만의 폰뚜~</h1>
+      <h1 className="heading">{user.name} 만의 폰뚜~</h1>
       <div className="subbox">
         {fonts.map((font) => (
           <div key={font.id} className="font-row">
