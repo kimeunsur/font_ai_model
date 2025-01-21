@@ -23,9 +23,9 @@
   width: 100%;
   max-width: 1200px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .output-group {
@@ -36,9 +36,13 @@
   min-width: 300px;
   max-height: 400px; /* 그룹당 최대 높이 */
   overflow-y: auto; /* 세로 스크롤 활성화 */
-  border: 1px solid #eee;
+  border: 1px solid transparent;
   border-radius: 8px;
   padding: 10px;
+  overflow: hidden; /* 기본적으로 스크롤바 숨기기 */
+  overflow-y: scroll; /* 세로 스크롤 유지 */
+  -ms-overflow-style: none; /* IE와 Edge에서 스크롤바 숨김 */
+  scrollbar-width: none; /* Firefox에서 스크롤바 숨김 */
 }
 
 .output-label {
@@ -112,20 +116,19 @@
 /* 선택된 항목 스타일 */
 .output-text.selected {
   background-color: #eef;
-  border-color: #99f;
+  border: 3px;
+  border-color: rgb(0, 0, 234);
   cursor: pointer;
 }
 
 .output-image.selected {
-  border: 3px solid #99f;
+  border: 3px solid rgb(77, 77, 83);
   border-radius: 8px;
 }
 
 .preview-container {
   flex-grow: 1; /* 남은 공간을 모두 차지 */
   display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #f9f9f9;
   background-size: cover;
   background-position: center;
@@ -135,14 +138,17 @@
 }
 
 .editable-text {
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0.2); /* 반투명 배경 */
-  border: 1px solid #ccc;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.6); /* 반투명 배경 */ 
+  border: 1px solid transparent;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
-  padding: 10px;
+  place-items: center;
+  padding: 20px;
   font-size: 16px;
   resize: none;
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   text-align: center;
 }
