@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/NavBar.css";
 
 const NavBar = () => {
-  const { user, logoutUser } = useUser();
+  const { user, logoutUser } = useUser();  
   const navigate = useNavigate();
 
   const [buttonColor, setButtonColor] = useState("#ffffff"); // 버튼 색상
