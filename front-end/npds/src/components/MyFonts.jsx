@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import testFontData from "../data/testFontData";
 import { useUser } from "../UserContext";
 import "../styles/MyFonts.css";
@@ -6,6 +7,7 @@ import "../styles/MyFonts.css";
 const MyFonts = () => {
   const [fonts, setFonts] = useState([]);
   const { user } = useUser();
+  const navigate = useNavigate();
 
   // 더미 데이터를 로드
   useEffect(() => {
@@ -24,7 +26,7 @@ const MyFonts = () => {
           </div>
         ))}
       </div>
-      <button> 폰트 생성하기 </button>
+      <button onClick={() => navigate("/create-font")}>폰트 생성하기</button>
     </main>
   );
 };
