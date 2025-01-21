@@ -1,7 +1,7 @@
-const testFontData = Array.from({ length: 10 }, (_, i) => ({
+const testLetterData = Array.from({ length: 10 }, (_, i) => ({
   id: (i + 1).toString(),
   userId: `user${i + 1}`,
-  fontName: `FontName_${i + 1}`,
+  letterName: `LetterName_${i + 1}`,
   createdAt: new Date(
     2025,
     Math.floor(Math.random() * 12),
@@ -9,4 +9,4 @@ const testFontData = Array.from({ length: 10 }, (_, i) => ({
   ).toISOString(),
 }));
 
-export default testFontData;
+export default testLetterData;
