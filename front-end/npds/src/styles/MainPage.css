@@ -6,7 +6,7 @@
   align-items: flex-start; /* Tailwind's items-center */
   justify-content: space-between; /* Tailwind's justify-center */
   gap: 1.5rem; /* Tailwind's gap-6 */
-  background-image: url("./background.jpg"); /* Inline style */
+  background-image: url("./background.png"); /* Inline style */
   background-size: cover; /* Inline style */
   background-position: center; /* Inline style */
   background-repeat: no-repeat; /* Inline style */

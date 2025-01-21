@@ -35,7 +35,7 @@ const MainPage = () => {
             <br />
             <br />
             <h1 className="hheading">왜냐면, 우리가 <strong>니편</strong>이니까.</h1>
-            <span className="signature">- 니편대써 팀 드림</span>
+            <span>- 니편대써 팀 드림</span>
           </p>
         </div>
         <div className="button-group">
