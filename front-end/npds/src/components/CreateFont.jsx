@@ -23,7 +23,7 @@ const CreateFont = () => {
     console.log("제출된 파일:", selectedFile);
 
     // 제출 후 다른 페이지로 리디렉션
-    navigate("/create-font2");
+    navigate("/create-font2", { state: { file: selectedFile } });
   };
 
   return (

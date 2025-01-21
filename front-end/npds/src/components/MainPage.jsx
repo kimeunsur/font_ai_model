@@ -17,7 +17,7 @@ const MainPage = () => {
             "편지? 그게 뭐지? 함수 그래프 같은 거야?"
             <br />
             걱정 마라, 감성이 부족한 공학도여.
-            <strong> 우리에겐 <span className="highlight">니편대써</span>가 있으니까!</strong>
+             우리에겐 <strong>니편대써</strong>가 있으니까!
             <br />
             편지지를 고르고, 몇 마디만 입력해라.
             <br />
