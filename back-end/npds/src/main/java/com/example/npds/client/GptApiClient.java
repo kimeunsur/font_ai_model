@@ -37,7 +37,7 @@ public class GptApiClient {
         try {
             List<GptRequest.Message> messages = List.of(
                 new GptRequest.Message("system", "You are a helpful assistant."),
-                new GptRequest.Message("user", "Generate 3 responses (minimum 200 tokens per response/no english) for the following question: " + question)
+                new GptRequest.Message("user", " Please ensure that all responses are written in the format of a letter. Do not include any introductory or additional explanations; write only the letter content itself, formatted naturally and appropriately." + question)
             );
             
             
