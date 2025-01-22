@@ -37,11 +37,24 @@
   padding: 5px 40px;
 }
 
-/* 버튼 래퍼 */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .color-picker-wrapper {
   position: relative;
-  width: 80px; /* 버튼 크기 */
+  width: 80px;
   height: 80px;
+  transition: transform 1s ease-in-out; /* 회전 애니메이션을 부드럽게 */
+}
+
+.color-picker-wrapper.rotating {
+  animation: rotate 1s linear;
 }
 
 /* 클릭 가능한 blue_areas.png */
