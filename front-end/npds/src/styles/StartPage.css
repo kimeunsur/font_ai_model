@@ -10,7 +10,7 @@
     bottom: 0;       /* 화면의 하단에 붙임 */
     left: 50%;       /* 화면의 가로 중앙으로 이동 */
     transform: translateX(-70%); /* 이미지를 정확히 중앙에 위치시키기 위해 가로 축 보정 */
-    width: 350px;    /* 적절한 크기로 조정 (필요 시 수정 가능) */
+    width: 400px;    /* 적절한 크기로 조정 (필요 시 수정 가능) */
     height: auto;    /* 이미지 비율 유지 */
   }
 
@@ -33,7 +33,7 @@
   
   .npds-text {
     font-size: calc(25vh); /* 세로 사이즈에 비례 */
-    width: calc(25vh); /* 가로 사이즈도 세로와 동일하게 설정 */
+    width: calc(20vh); /* 가로 사이즈도 세로와 동일하게 설정 */
     height: calc(25vh); /* 세로와 동일한 크기 */
     line-height: 1;
     font-weight: bold;
@@ -47,36 +47,40 @@
     position: absolute;
     top: 25%; /* 화면의 1/4만큼 아래로 이동 */
     right: 0; /* 화면 우측에 위치 */
-    font-size: calc(20vh); /* NPDS와 동일한 글자 크기 */
+    font-size: calc(18vh); /* NPDS와 동일한 글자 크기 */
     font-weight: bold;
     color: black;
     white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
     text-align: right; /* 우측 정렬 */
+    margin-right: 30px;
   }
   
   .npds-subtitle {
     position: absolute;
     top: 50%; /* npds-title 바로 아래로 배치 */
     right: 0; /* 화면 우측에 위치 */
-    font-size: calc(9.8vh); /* 조금 더 작은 글자 크기 */
+    font-size: calc(9vh); /* 조금 더 작은 글자 크기 */
     color: black;
     text-align: right; /* 우측 정렬 */
     font-weight: normal; /* 부제목이라서 굵기를 조금 더 부드럽게 설정 */
     white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+    margin-right: 30px;
   }
 
   .npds-button {
+    margin-right: 100px;
     position: absolute;
     top: 70%; /* npds-subtitle 바로 아래로 배치 */
     right: 0; /* 화면 우측에 위치 */
     transform: translateX(-30%);
-    background-color: #707070; /* 배경색 */
-    color: white; /* 글자색 */
+    background-color: #fffcfc; /* 배경색 */
+    color: rgb(255, 255, 255); /* 글자색 */
     font-size: calc(5vh); /* 버튼 크기 */
     padding: 1rem 2rem;
     text-align: center; /* 텍스트 중앙 정렬 */
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 8px ;
+    border-color: transparent;
     font-weight: bold;
     white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
     transition: background-color 0.3s ease;

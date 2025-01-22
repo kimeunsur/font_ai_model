@@ -1,17 +1,31 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import "../styles/MainPage.css"; // CSS 파일 가져오기
 
 const MainPage = () => {
   const navigate = useNavigate();
+  const [animateHeading, setAnimateHeading] = useState(false);
+  const [animateButtons, setAnimateButtons] = useState(false);
+  const [animateDescription, setAnimateDescription] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(false);
 
+  useEffect(() => {
+    const hasVisited = localStorage.getItem("mainpageVisited");
+    if (!hasVisited) {
+      setAnimateButtons(true);
+      localStorage.setItem("mainpageVisited", 'true');
+    }
+    setTimeout(() => setAnimateHeading(true), 0);
+    setTimeout(() => setAnimateDescription(true), 2000);
+    setTimeout(() => setAnimateButtons(true), 3000);
+  }, []);
   return (
     <div>
       <main className="mmain">
-        <div className="heading-box">
-          <h1 className="hheading">뭐, 대충 해줄 테니까 감성 그런 거 기대하지 마</h1>
-          <p className="description">
+      <div className={`heading-box ${animateHeading ? "animate" : ""}`}>
+        <h1 className="hheading">뭐, 대충 해줄 테니까 감성 그런 거 기대하지 마</h1>
+          <p className={`description ${animateDescription ? "animate" : ""}`}>
             세상은 감성이 넘치고, 사람들은 아름다운 말을 주고받는다. 하지만 어디선가 누군가는 고민한다.
             <br />
             "편지? 그게 뭐지? 함수 그래프 같은 거야?"
@@ -35,10 +49,11 @@ const MainPage = () => {
             <br />
             <br />
           </p>
-            <h1 className="hheading">왜냐면, 우리가 <strong>니편</strong>이니까.</h1>
+            <h1 className="hheading">왜냐하면, 우리가 <strong>니편</strong>이니까.</h1>
+            <div className="custom-margin"></div>
             <span>- 니편대써 팀 드림</span>
         </div>
-        <div className="button-group">
+        <div className={`button-group ${animateButtons ? "animate" : ""}`}>
           <button
             onClick={() => navigate("/create-letter")}
             className="button button-blue"

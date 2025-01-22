@@ -72,9 +72,7 @@ const LoginModal = ({ isOpen, onClose, onSignUp, onLoginSuccess }) => {
         </form>
 
         <div className="divider">
-          <hr className="divider-line" />
-          <span className="divider-text">혹은</span>
-          <hr className="divider-line" />
+
         </div>
 
         {/* 카카오톡 로그인 */}
