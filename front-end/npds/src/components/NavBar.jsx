@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { useUser } from "../UserContext";
 import { useNavigate } from "react-router-dom";
+import BlueAreas from "../styles/aaa (1).svg";
+import nonBlueAreas from "../styles/bbb_transparent.png";
 import "../styles/NavBar.css";
+import sibal from "../styles/bononukki.png";
 
 const NavBar = () => {
   const { user, logoutUser, loading } = useUser();  
   const navigate = useNavigate();
 
-  const [buttonColor, setButtonColor] = useState("#ffffff"); // 버튼 색상
+  const [svgUrl, setSvgUrl] = useState(BlueAreas);
+  const [buttonColor, setButtonColor] = useState("#0000ff"); // 버튼 색상
   const [trackingColor, setTrackingColor] = useState(false); // 색상 선택 모드 여부
-
+  
   const handleLogout = () => {
     logoutUser();
     navigate("/");
@@ -34,7 +38,17 @@ const NavBar = () => {
     try {
       setTrackingColor(true); // 색상 추적 시작
       const result = await eyeDropper.open();
-      setButtonColor(result.sRGBHex); // 선택된 색상 설정
+      const color = result.sRGBHex;
+      // SVG 파일 읽어서 fill 속성 변경
+      const response = await fetch(BlueAreas);
+      let svgText = await response.text();
+      svgText = svgText.replace(/fill="[^"]*"/g, `fill="${color}"`); // 모든 fill 속성 변경
+
+      // 변경된 SVG를 Blob URL로 변환
+      const blob = new Blob([svgText], { type: "image/svg+xml" });
+      const newUrl = URL.createObjectURL(blob);
+      setSvgUrl(newUrl);
+      setButtonColor(color); // 선택된 색상 설정정
       document.documentElement.style.setProperty("--text-color", result.sRGBHex);
     } catch (err) {
       console.error("색상 선택 취소 또는 오류:", err);
@@ -49,13 +63,25 @@ const NavBar = () => {
         <h1>NPDS</h1>
       </div>
 
-      <button
-        className="color-picker-button"
-        style={{ backgroundColor: buttonColor }}
-        onClick={handleColorPick}
-      >
-        {trackingColor ? "색상 선택 중..." : "Pick Color"}
-      </button>
+      <div className="color-picker-wrapper">
+        {/* 클릭 가능한 blue_areas.png */}
+        <img
+          src={svgUrl}
+          alt="Dynamic SVG"
+          onClick={handleColorPick}
+          className="color-picker-active"
+        />
+        {/* 겹쳐 있는 non_blue_areas.png */}
+        <img
+          src={nonBlueAreas} 
+          alt="Color Picker Background"
+          className="color-picker-background"
+        />
+      </div>
+
+      {/* <img
+        src={sibal}
+      /> */}
 
       <div className="navbar-right">
         {user && (

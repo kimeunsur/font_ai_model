@@ -12,7 +12,6 @@
     transform: translateX(-70%); /* 이미지를 정확히 중앙에 위치시키기 위해 가로 축 보정 */
     width: 350px;    /* 적절한 크기로 조정 (필요 시 수정 가능) */
     height: auto;    /* 이미지 비율 유지 */
-    opacity: 70%;
   }
 
   .npds-container {
@@ -71,7 +70,7 @@
     top: 70%; /* npds-subtitle 바로 아래로 배치 */
     right: 0; /* 화면 우측에 위치 */
     transform: translateX(-30%);
-    background-color: #111111; /* 배경색 */
+    background-color: #ffffff; /* 배경색 */
     color: white; /* 글자색 */
     font-size: calc(5vh); /* 버튼 크기 */
     padding: 1rem 2rem;
