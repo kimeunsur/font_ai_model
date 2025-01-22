@@ -61,41 +61,153 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-left" onClick={navigateToMainPage}>
-        <h1>NPDS</h1>
-      </div>
+  <div className="navbar-left" onClick={navigateToMainPage}>
+    <h1>NPDS</h1>
+  </div>
 
-      <div className="color-picker-wrapper">
-        {/* 클릭 가능한 blue_areas.png */}
-        <img
-          src={svgUrl || BlueAreas}
-          alt="Dynamic SVG"
-          onClick={handleColorPick}
-          className="color-picker-active"
-        />
-        {/* 겹쳐 있는 non_blue_areas.png */}
-        <img
-          src={nonBlueAreas} 
-          alt="Color Picker Background"
-          className="color-picker-background"
-        />
-      </div>
+  <div className="color-picker-wrapper">
+    <img
+      src={svgUrl || BlueAreas}
+      alt="Dynamic SVG"
+      onClick={handleColorPick}
+      className="color-picker-active"
+    />
+    <img
+      src={nonBlueAreas}
+      alt="Color Picker Background"
+      className="color-picker-background"
+    />
+  </div>
+  <div className="color-picker-wrapper">
+    <img
+      src={svgUrl || BlueAreas}
+      alt="Dynamic SVG"
+      onClick={handleColorPick}
+      className="color-picker-active"
+    />
+    <img
+      src={nonBlueAreas}
+      alt="Color Picker Background"
+      className="color-picker-background"
+    />
+  </div>
+  <div className="color-picker-wrapper">
+    <img
+      src={svgUrl || BlueAreas}
+      alt="Dynamic SVG"
+      onClick={handleColorPick}
+      className="color-picker-active"
+    />
+    <img
+      src={nonBlueAreas}
+      alt="Color Picker Background"
+      className="color-picker-background"
+    />
+  </div>
+  <div className="color-picker-wrapper">
+    <img
+      src={svgUrl || BlueAreas}
+      alt="Dynamic SVG"
+      onClick={handleColorPick}
+      className="color-picker-active"
+    />
+    <img
+      src={nonBlueAreas}
+      alt="Color Picker Background"
+      className="color-picker-background"
+    />
+  </div>
+  <div className="color-picker-wrapper">
+    <img
+      src={svgUrl || BlueAreas}
+      alt="Dynamic SVG"
+      onClick={handleColorPick}
+      className="color-picker-active"
+    />
+    <img
+      src={nonBlueAreas}
+      alt="Color Picker Background"
+      className="color-picker-background"
+    />
+  </div>
+  <div className="color-picker-wrapper">
+    <img
+      src={svgUrl || BlueAreas}
+      alt="Dynamic SVG"
+      onClick={handleColorPick}
+      className="color-picker-active"
+    />
+    <img
+      src={nonBlueAreas}
+      alt="Color Picker Background"
+      className="color-picker-background"
+    />
+  </div>
+  <div className="color-picker-wrapper">
+    <img
+      src={svgUrl || BlueAreas}
+      alt="Dynamic SVG"
+      onClick={handleColorPick}
+      className="color-picker-active"
+    />
+    <img
+      src={nonBlueAreas}
+      alt="Color Picker Background"
+      className="color-picker-background"
+    />
+  </div>
+  <div className="color-picker-wrapper">
+    <img
+      src={svgUrl || BlueAreas}
+      alt="Dynamic SVG"
+      onClick={handleColorPick}
+      className="color-picker-active"
+    />
+    <img
+      src={nonBlueAreas}
+      alt="Color Picker Background"
+      className="color-picker-background"
+    />
+  </div>
+  <div className="color-picker-wrapper">
+    <img
+      src={svgUrl || BlueAreas}
+      alt="Dynamic SVG"
+      onClick={handleColorPick}
+      className="color-picker-active"
+    />
+    <img
+      src={nonBlueAreas}
+      alt="Color Picker Background"
+      className="color-picker-background"
+    />
+  </div>
+  <div className="color-picker-wrapper">
+    <img
+      src={svgUrl || BlueAreas}
+      alt="Dynamic SVG"
+      onClick={handleColorPick}
+      className="color-picker-active"
+    />
+    <img
+      src={nonBlueAreas}
+      alt="Color Picker Background"
+      className="color-picker-background"
+    />
+  </div>
 
-      {/* <img
-        src={sibal}
-      /> */}
-
-      <div className="navbar-right">
-        {user && (
-          <div className="user-info">
-            <span>{`${user.name} 님`}</span>
-            <p className="logout-button" onClick={handleLogout}>
-              로그아웃할거면 하든가
-            </p>
-          </div>
-        )}
+  <div className="navbar-right">
+    {user && (
+      <div className="user-info">
+        <span>{`${user.name} 님`}</span>
+        <p className="logout-button" onClick={handleLogout}>
+          로그아웃할거면 하든가
+        </p>
       </div>
-    </nav>
+    )}
+  </div>
+</nav>
+
   );
 };
 
