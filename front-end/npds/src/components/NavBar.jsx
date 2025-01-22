@@ -51,7 +51,7 @@ const NavBar = () => {
 
       // 클릭된 요소의 색상 업데이트
       const newColors = [...colors];
-      newColors[index] = color;
+      newColors[index] = color; // 클릭된 요소만 색상 변경
       setColors(newColors);
 
       // SVG 파일 읽어서 클릭된 요소만 URL 업데이트
@@ -105,8 +105,9 @@ const NavBar = () => {
     setButtonColor("#000"); // --text-color 기본값
     document.documentElement.style.setProperty("--text-color", "#000");
 
-    const newRotating = [...rotating];
-    newRotating[index] = false; // 회전 상태 해제
+    // 이전 회전 상태 초기화 및 클릭된 요소만 회전 활성화
+    const newRotating = Array(10).fill(false);
+    newRotating[index] = true; // 긴 좌클릭으로도 해당 요소 회전
     setRotating(newRotating);
   };
 
