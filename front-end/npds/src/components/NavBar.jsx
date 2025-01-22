@@ -11,6 +11,8 @@ const NavBar = () => {
   const { svgUrl, setSvgUrl, buttonColor, setButtonColor, resetColors } = useColor();
   const navigate = useNavigate();
 
+  const colorPickers = Array.from({ length: 13 });
+
   // const [svgUrl, setSvgUrl] = useState(BlueAreas);
   // const [buttonColor, setButtonColor] = useState("#0000ff"); // 버튼 색상
   // const [trackingColor, setTrackingColor] = useState(false); // 색상 선택 모드 여부
@@ -65,136 +67,21 @@ const NavBar = () => {
     <h1>NPDS</h1>
   </div>
 
-  <div className="color-picker-wrapper">
-    <img
-      src={svgUrl || BlueAreas}
-      alt="Dynamic SVG"
-      onClick={handleColorPick}
-      className="color-picker-active"
-    />
-    <img
-      src={nonBlueAreas}
-      alt="Color Picker Background"
-      className="color-picker-background"
-    />
-  </div>
-  <div className="color-picker-wrapper">
-    <img
-      src={svgUrl || BlueAreas}
-      alt="Dynamic SVG"
-      onClick={handleColorPick}
-      className="color-picker-active"
-    />
-    <img
-      src={nonBlueAreas}
-      alt="Color Picker Background"
-      className="color-picker-background"
-    />
-  </div>
-  <div className="color-picker-wrapper">
-    <img
-      src={svgUrl || BlueAreas}
-      alt="Dynamic SVG"
-      onClick={handleColorPick}
-      className="color-picker-active"
-    />
-    <img
-      src={nonBlueAreas}
-      alt="Color Picker Background"
-      className="color-picker-background"
-    />
-  </div>
-  <div className="color-picker-wrapper">
-    <img
-      src={svgUrl || BlueAreas}
-      alt="Dynamic SVG"
-      onClick={handleColorPick}
-      className="color-picker-active"
-    />
-    <img
-      src={nonBlueAreas}
-      alt="Color Picker Background"
-      className="color-picker-background"
-    />
-  </div>
-  <div className="color-picker-wrapper">
-    <img
-      src={svgUrl || BlueAreas}
-      alt="Dynamic SVG"
-      onClick={handleColorPick}
-      className="color-picker-active"
-    />
-    <img
-      src={nonBlueAreas}
-      alt="Color Picker Background"
-      className="color-picker-background"
-    />
-  </div>
-  <div className="color-picker-wrapper">
-    <img
-      src={svgUrl || BlueAreas}
-      alt="Dynamic SVG"
-      onClick={handleColorPick}
-      className="color-picker-active"
-    />
-    <img
-      src={nonBlueAreas}
-      alt="Color Picker Background"
-      className="color-picker-background"
-    />
-  </div>
-  <div className="color-picker-wrapper">
-    <img
-      src={svgUrl || BlueAreas}
-      alt="Dynamic SVG"
-      onClick={handleColorPick}
-      className="color-picker-active"
-    />
-    <img
-      src={nonBlueAreas}
-      alt="Color Picker Background"
-      className="color-picker-background"
-    />
-  </div>
-  <div className="color-picker-wrapper">
-    <img
-      src={svgUrl || BlueAreas}
-      alt="Dynamic SVG"
-      onClick={handleColorPick}
-      className="color-picker-active"
-    />
-    <img
-      src={nonBlueAreas}
-      alt="Color Picker Background"
-      className="color-picker-background"
-    />
-  </div>
-  <div className="color-picker-wrapper">
-    <img
-      src={svgUrl || BlueAreas}
-      alt="Dynamic SVG"
-      onClick={handleColorPick}
-      className="color-picker-active"
-    />
-    <img
-      src={nonBlueAreas}
-      alt="Color Picker Background"
-      className="color-picker-background"
-    />
-  </div>
-  <div className="color-picker-wrapper">
-    <img
-      src={svgUrl || BlueAreas}
-      alt="Dynamic SVG"
-      onClick={handleColorPick}
-      className="color-picker-active"
-    />
-    <img
-      src={nonBlueAreas}
-      alt="Color Picker Background"
-      className="color-picker-background"
-    />
-  </div>
+  {colorPickers.map((_, index) => (
+        <div className="color-picker-wrapper" key={index}>
+          <img
+            src={svgUrl || BlueAreas}
+            alt={`Dynamic SVG ${index + 1}`}
+            onClick={handleColorPick}
+            className="color-picker-active"
+          />
+          <img
+            src={nonBlueAreas}
+            alt={`Color Picker Background ${index + 1}`}
+            className="color-picker-background"
+          />
+        </div>
+      ))}
 
   <div className="navbar-right">
     {user && (
