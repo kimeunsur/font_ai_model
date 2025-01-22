@@ -5,19 +5,19 @@ import { useColor } from "../ColorContext";
 import BlueAreas from "../styles/aaa (1).svg";
 import nonBlueAreas from "../styles/bbb_transparent.png";
 import "../styles/NavBar.css";
-import sibal from "../styles/bononukki.png";
 
 const NavBar = () => {
   const { user, logoutUser, loading } = useUser();
-  const { svgUrl, setSvgUrl, buttonColor, setButtonColor } = useColor();
+  const { svgUrl, setSvgUrl, buttonColor, setButtonColor, resetColors } = useColor();
   const navigate = useNavigate();
 
   // const [svgUrl, setSvgUrl] = useState(BlueAreas);
   // const [buttonColor, setButtonColor] = useState("#0000ff"); // 버튼 색상
-  const [trackingColor, setTrackingColor] = useState(false); // 색상 선택 모드 여부
+  // const [trackingColor, setTrackingColor] = useState(false); // 색상 선택 모드 여부
   
   const handleLogout = () => {
     logoutUser();
+    resetColors();
     navigate("/");
   };
 
@@ -38,7 +38,7 @@ const NavBar = () => {
     const eyeDropper = new window.EyeDropper();
 
     try {
-      setTrackingColor(true); // 색상 추적 시작
+      // setTrackingColor(true); // 색상 추적 시작
       const result = await eyeDropper.open();
       const color = result.sRGBHex;
       // SVG 파일 읽어서 fill 속성 변경
@@ -53,10 +53,10 @@ const NavBar = () => {
       setButtonColor(color); // 선택된 색상 설정정
       document.documentElement.style.setProperty("--text-color", result.sRGBHex);
     } catch (err) {
-      console.error("색상 선택 취소 또는 오류:", err);
-    } finally {
-      setTrackingColor(false); // 색상 추적 종료
-    }
+      console.error("색상 선택 취소 또는 오류:", err);}
+    // } finally {
+    //   setTrackingColor(false); // 색상 추적 종료
+    // }
   };
 
   return (
