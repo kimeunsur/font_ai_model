@@ -17,6 +17,8 @@ const NavBar = () => {
     setRotating,
     colors,
     setColors,
+    lastRotatingIndex,
+    setLastRotatingIndex,
     resetColors,
   } = useColor();
   const navigate = useNavigate();
@@ -47,28 +49,31 @@ const NavBar = () => {
 
       // 클릭된 요소의 색상 업데이트
       const newColors = [...colors];
-      newColors[index] = color; // 클릭된 요소만 색상 변경
+      newColors[index] = color;
       setColors(newColors);
 
       // SVG 파일 읽어서 클릭된 요소만 URL 업데이트
       const response = await fetch(BlueAreas);
       let svgText = await response.text();
-      svgText = svgText.replace(/fill="[^"]*"/g, `fill="${color}"`); // 색상 변경
+      svgText = svgText.replace(/fill="[^"]*"/g, `fill="${color}"`);
 
       const blob = new Blob([svgText], { type: "image/svg+xml" });
       const newSvgUrl = URL.createObjectURL(blob);
 
-      // 클릭된 요소만 회전 상태 활성화
-      const newRotating = [...rotating];
+      // 클릭된 요소의 URL 업데이트
+      const newSvgUrls = [...svgUrl];
+      newSvgUrls[index] = newSvgUrl;
+      setSvgUrl(newSvgUrls);
+
+      // 이전 회전 상태 초기화 및 클릭된 요소의 회전 상태 활성화
+      const newRotating = Array(13).fill(false);
       newRotating[index] = true;
       setRotating(newRotating);
 
-      // 클릭된 요소의 URL 업데이트
-      const newSvgUrls = [...svgUrl];
-      newSvgUrls[index] = newSvgUrl; // 선택한 요소만 SVG 업데이트
-      setSvgUrl(newSvgUrls);
+      // 마지막 회전 인덱스 업데이트
+      setLastRotatingIndex(index);
 
-      // --text-color 업데이트 (일괄 적용)
+      // --text-color 업데이트
       setButtonColor(color);
       document.documentElement.style.setProperty("--text-color", color);
     } catch (err) {
