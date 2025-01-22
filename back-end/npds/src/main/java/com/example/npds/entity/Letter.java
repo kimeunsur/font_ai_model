@@ -18,7 +18,7 @@ public class Letter {
 
     private String userId; 
 
-    private String content;
+    private byte[] content;
 
     private LocalDateTime addedAt;
 

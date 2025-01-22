@@ -11,7 +11,7 @@ import CreateFont from "./components/CreateFont";
 import CreateFont2 from "./components/CreateFont2";
 import MyLetters from "./components/MyLetters";
 import FinalLetter from "./components/FinalLetter";
-
+import ErrorBoundary from "./components/ErrorBoundary"
 const App = () => {
   return (
     <UserProvider>

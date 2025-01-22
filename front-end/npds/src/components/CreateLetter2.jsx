@@ -25,16 +25,12 @@ const CreateLetter2 = () => {
     const token = localStorage.getItem("token");
     console.log("토큰~",token);
     const dataURL = canvas.toDataURL("image/png");
-    const storeLetter = await letterStore(dataURL);
+    await letterStore(dataURL);
     const link = document.createElement("a");
     link.href = dataURL;
     link.download = "final-letter.png";
     link.click();
-    console.log("저장완~");
-    const FinalData = {
-      text: selectedText,
-      image: selectedImage
-    }; 
+    console.log("저장완~:");
     navigate("/final-letter", {state: {ImageData: dataURL}});
   }
 
