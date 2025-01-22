@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useUser } from "../UserContext";
 import { useNavigate } from "react-router-dom";
-import blueAreas from "../styles/aaa.png";
+import blueAreas from "../styles/aaa (1).svg";
 import nonBlueAreas from "../styles/bbb_transparent.png";
 import "../styles/NavBar.css";
 import sibal from "../styles/bononukki.png";
