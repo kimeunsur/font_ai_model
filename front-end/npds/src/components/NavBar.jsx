@@ -8,11 +8,11 @@ import "../styles/NavBar.css";
 
 const NavBar = () => {
   const { user, logoutUser, loading } = useUser();
-  const { svgUrl, setSvgUrl, buttonColor, setButtonColor, resetColors } = useColor();
+  const { svgUrl, setSvgUrl, buttonColor, setButtonColor, rotating, setRotating, resetColors } = useColor();
   const navigate = useNavigate();
 
   const colorPickers = Array.from({ length: 13 });
-  const [rotating, setRotating] = useState(Array(13).fill(false)); // 각 요소의 회전 상태
+  // const [rotating, setRotating] = useState(Array(13).fill(false)); // 각 요소의 회전 상태
 
   // const [svgUrl, setSvgUrl] = useState(BlueAreas);
   // const [buttonColor, setButtonColor] = useState("#0000ff"); // 버튼 색상
@@ -21,6 +21,7 @@ const NavBar = () => {
   const handleLogout = () => {
     logoutUser();
     resetColors();
+    setRotating(Array(13).fill(false));
     navigate("/");
   };
 
@@ -56,16 +57,10 @@ const NavBar = () => {
       setButtonColor(color); // 선택된 색상 설정정
       document.documentElement.style.setProperty("--text-color", result.sRGBHex);
 
-      // 특정 index의 회전 상태를 업데이트
+      // 특정 index의 회전 상태를 true로 유지
       const newRotating = [...rotating];
-      newRotating[index] = true; // 회전 시작
+      newRotating[index] = true; // 회전 유지
       setRotating(newRotating);
-
-      // 일정 시간 후 회전 상태 초기화
-      setTimeout(() => {
-        newRotating[index] = false; // 회전 종료
-        setRotating([...newRotating]);
-      }, 1000); // 1초 동안 회전
     } catch (err) {
       console.error("색상 선택 취소 또는 오류:", err);}
     // } finally {
@@ -81,13 +76,13 @@ const NavBar = () => {
 
   {colorPickers.map((_, index) => (
         <div
-        className={`color-picker-wrapper ${rotating[index] ? "rotating" : ""}`}
-        key={index}
+          className={`color-picker-wrapper ${rotating[index] ? "rotating" : ""}`}
+          key={index}
         >
           <img
             src={svgUrl || BlueAreas}
             alt={`Dynamic SVG ${index + 1}`}
-            onClick={() => handleColorPick(index)}
+            onClick={() => handleColorPick(index)} // index를 전달
             className="color-picker-active"
           />
           <img

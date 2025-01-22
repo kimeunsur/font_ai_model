@@ -50,11 +50,11 @@
   position: relative;
   width: 80px;
   height: 80px;
-  transition: transform 1s ease-in-out; /* 회전 애니메이션을 부드럽게 */
+  transition: transform 1s ease-in-out;
 }
 
 .color-picker-wrapper.rotating {
-  animation: rotate 1s linear;
+  animation: rotate 2s linear infinite; /* 무한 회전 */
 }
 
 /* 클릭 가능한 blue_areas.png */
