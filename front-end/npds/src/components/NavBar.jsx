@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useUser } from "../UserContext";
 import { useNavigate } from "react-router-dom";
-import blueAreas from "../styles/aaa (1).svg";
+import { ReactComponent as BlueAreas } from "../styles/aaa_updated.svg";
 import nonBlueAreas from "../styles/bbb_transparent.png";
 import "../styles/NavBar.css";
 import sibal from "../styles/bononukki.png";
@@ -10,8 +10,10 @@ const NavBar = () => {
   const { user, logoutUser } = useUser();  
   const navigate = useNavigate();
 
-  const [buttonColor, setButtonColor] = useState("#ffffff"); // 버튼 색상
+  const [buttonColor, setButtonColor] = useState("#0000ff"); // 버튼 색상
   const [trackingColor, setTrackingColor] = useState(false); // 색상 선택 모드 여부
+
+  console.log('current color: ' + buttonColor);
 
   const handleLogout = () => {
     logoutUser();
@@ -35,6 +37,7 @@ const NavBar = () => {
       setTrackingColor(true); // 색상 추적 시작
       const result = await eyeDropper.open();
       setButtonColor(result.sRGBHex); // 선택된 색상 설정
+      console.log("siuu" + buttonColor);
       document.documentElement.style.setProperty("--text-color", result.sRGBHex);
     } catch (err) {
       console.error("색상 선택 취소 또는 오류:", err);
@@ -51,12 +54,11 @@ const NavBar = () => {
 
       <div className="color-picker-wrapper">
         {/* 클릭 가능한 blue_areas.png */}
-        <img
-          src={blueAreas}
+        <BlueAreas
           // src={sibal}
-          alt="Color Picker Active Area"
-          className="color-picker-active"
           onClick={handleColorPick}
+          className="color-picker-active"
+          style={{ color: buttonColor, fill: buttonColor, cursor: "pointer" }}
         />
         {/* 겹쳐 있는 non_blue_areas.png */}
         <img
