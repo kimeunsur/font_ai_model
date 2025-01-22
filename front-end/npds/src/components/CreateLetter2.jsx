@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/CreateLetter2.css";
-
 
 const CreateLetter2 = () => {
   const location = useLocation();
   const { gptResponse, imageResponse } = location.state || {};
-
+  const navigate = useNavigate();
   // 상태 관리
   const [selectedText, setSelectedText] = useState(""); // 선택된 텍스트
   const [selectedImage, setSelectedImage] = useState(null); // 선택된 이미지
+
+  const handleSubmit = () => {
+    const FinalData = {
+      text: selectedText,
+      image: selectedImage
+    }; 
+    navigate("/final-letter", {state: FinalData});
+  }
 
   return (
     <main className="main">
@@ -72,6 +79,7 @@ const CreateLetter2 = () => {
           </div>
         </div>
       </div>
+      <button onClick={handleSubmit}>이걸 카톡으로 보낼게!</button>
     </main>
   );
 };

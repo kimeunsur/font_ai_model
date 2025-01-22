@@ -10,6 +10,7 @@ import MyFonts from "./components/MyFonts";
 import CreateFont from "./components/CreateFont";
 import CreateFont2 from "./components/CreateFont2";
 import MyLetters from "./components/MyLetters";
+import FinalLetter from "./components/FinalLetter";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/create-font" element={<CreateFont />} />
           <Route path="/create-font2" element={<CreateFont2 />} />
           <Route path="/my-letters" element={<MyLetters />} />
+          <Route path="/final-letter" element={<FinalLetter />} />
         </Route>
       </Routes>
     </UserProvider>
