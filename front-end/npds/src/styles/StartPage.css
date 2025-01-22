@@ -70,7 +70,7 @@
     top: 70%; /* npds-subtitle 바로 아래로 배치 */
     right: 0; /* 화면 우측에 위치 */
     transform: translateX(-30%);
-    background-color: #ffffff; /* 배경색 */
+    background-color: #707070; /* 배경색 */
     color: white; /* 글자색 */
     font-size: calc(5vh); /* 버튼 크기 */
     padding: 1rem 2rem;
@@ -83,5 +83,5 @@
   }
   
   .npds-button:hover {
-    background-color: #333333; /* 버튼 hover 시 색상 변경 */
+    background-color: #404040; /* 버튼 hover 시 색상 변경 */
   }
