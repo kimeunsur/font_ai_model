@@ -34,3 +34,31 @@
     font-size: 14px;
     padding: 5px 40px;
   }
+
+  /* 버튼 래퍼 */
+.color-picker-wrapper {
+  position: relative;
+  width: 50px; /* 버튼 크기 */
+  height: 50px;
+}
+
+/* 클릭 가능한 blue_areas.png */
+.color-picker-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer; /* 클릭 가능하게 */
+  z-index: 2; /* 앞쪽에 표시 */
+}
+
+/* 겹쳐 있는 non_blue_areas.png */
+.color-picker-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* 뒤쪽에 표시 */
+}

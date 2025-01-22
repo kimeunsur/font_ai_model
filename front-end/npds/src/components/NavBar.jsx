@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useUser } from "../UserContext";
 import { useNavigate } from "react-router-dom";
+import blueAreas from "../styles/aaa.png";
+import nonBlueAreas from "../styles/bbb_transparent.png";
 import "../styles/NavBar.css";
+import sibal from "../styles/bononukki.png";
 
 const NavBar = () => {
   const { user, logoutUser } = useUser();  
@@ -46,13 +49,26 @@ const NavBar = () => {
         <h1>NPDS</h1>
       </div>
 
-      <button
-        className="color-picker-button"
-        style={{ backgroundColor: buttonColor }}
-        onClick={handleColorPick}
-      >
-        {trackingColor ? "색상 선택 중..." : "Pick Color"}
-      </button>
+      <div className="color-picker-wrapper">
+        {/* 클릭 가능한 blue_areas.png */}
+        <img
+          src={blueAreas}
+          // src={sibal}
+          alt="Color Picker Active Area"
+          className="color-picker-active"
+          onClick={handleColorPick}
+        />
+        {/* 겹쳐 있는 non_blue_areas.png */}
+        <img
+          src={nonBlueAreas}
+          alt="Color Picker Background"
+          className="color-picker-background"
+        />
+      </div>
+
+      {/* <img
+        src={sibal}
+      /> */}
 
       <div className="navbar-right">
         {user && (
