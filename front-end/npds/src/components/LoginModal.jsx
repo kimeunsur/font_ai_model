@@ -4,13 +4,14 @@ import { useUser } from "../UserContext";
 import "../styles/LoginModal.css";
 import kakaotalkLogo1 from "../styles/KakaoTalk_logo.svg";
 import closeX from "../styles/close-x.svg";
+import { pass } from "three/tsl";
 
 const LoginModal = ({ isOpen, onClose, onSignUp, onLoginSuccess }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { loginUser: setUser } = useUser();
+  const { loginUser: setLoginUser } = useUser();
 
   if (!isOpen) return null;
 
@@ -21,7 +22,8 @@ const LoginModal = ({ isOpen, onClose, onSignUp, onLoginSuccess }) => {
     try {
       const data = await loginUser(email, password);
       console.log("로그인 성공:", data);
-      setUser(data);
+      const token = data.token;
+      setLoginUser(token);
       if (onLoginSuccess) onLoginSuccess(data);
     } catch (error) {
       console.error("로그인 실패:", error);

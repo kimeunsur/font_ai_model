@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/NavBar.css";
 
 const NavBar = () => {
-  const { user, logoutUser } = useUser();  
+  const { user, logoutUser, loading } = useUser();  
   const navigate = useNavigate();
 
   const [buttonColor, setButtonColor] = useState("#ffffff"); // 버튼 색상
@@ -19,6 +19,9 @@ const NavBar = () => {
     navigate("/main"); // MainPage로 리디렉션
   };
 
+  if (loading) {
+    return <nav className="navbar">로딩중 ...</nav>;
+  }
   // EyeDropper로 색상 선택
   const handleColorPick = async () => {
     if (!window.EyeDropper) {

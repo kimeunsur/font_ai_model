@@ -7,7 +7,7 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div>
       <main className="mmain">
         <div className="heading-box">
           <h1 className="hheading">뭐, 대충 해줄 테니까 감성 그런 거 기대하지 마</h1>
@@ -34,9 +34,9 @@ const MainPage = () => {
             니가 감성 없는 카이스트생이라면, 그건 아무 문제가 아니다.
             <br />
             <br />
+          </p>
             <h1 className="hheading">왜냐면, 우리가 <strong>니편</strong>이니까.</h1>
             <span>- 니편대써 팀 드림</span>
-          </p>
         </div>
         <div className="button-group">
           <button
@@ -60,7 +60,7 @@ const MainPage = () => {
         </div>
       </main>
     <NavBar />
-  </>
+  </div>
   );
 };
 

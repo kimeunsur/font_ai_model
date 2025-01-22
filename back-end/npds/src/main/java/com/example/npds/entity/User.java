@@ -12,12 +12,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 public class User {
     @Id
-    private String id; // MongoDB의 ID는 String 타입으로 사용
-
+    private String id; 
     private String name;
-
     private String email;
-
     private String password;
 
     @Override

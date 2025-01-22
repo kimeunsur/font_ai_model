@@ -1,21 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/CreateLetter2.css";
+import html2canvas from "html2canvas";
+import { letterStore } from "../systems/request";
 
 const CreateLetter2 = () => {
   const location = useLocation();
   const { gptResponse, imageResponse } = location.state || {};
   const navigate = useNavigate();
-  // 상태 관리
   const [selectedText, setSelectedText] = useState(""); // 선택된 텍스트
   const [selectedImage, setSelectedImage] = useState(null); // 선택된 이미지
+  const captureRef = useRef(null);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+
+    if (!captureRef.current) return;
+    const canvas = await html2canvas(captureRef.current, {
+      useCORS: true,
+      scale: 2,
+      width: captureRef.current.offsetWidth,
+      height: captureRef.current.offsetHeight,      
+    });
+    
+    const token = localStorage.getItem("token");
+    console.log("토큰~",token);
+    const dataURL = canvas.toDataURL("image/png");
+    const storeLetter = await letterStore(dataURL);
+    const link = document.createElement("a");
+    link.href = dataURL;
+    link.download = "final-letter.png";
+    link.click();
+    console.log("저장완~");
     const FinalData = {
       text: selectedText,
       image: selectedImage
     }; 
-    navigate("/final-letter", {state: FinalData});
+    navigate("/final-letter", {state: {ImageData: dataURL}});
   }
 
   return (
@@ -62,20 +82,37 @@ const CreateLetter2 = () => {
         {/* 세 번째 그룹 */}
         <div className="output-group">
           <label className="output-label">Preview & Edit:</label>
-          <div
-            className="preview-container"
-            style={{
-              backgroundImage: `url(${selectedImage})`,
-              height: "400px",
-              position: "relative",
-            }}
-          >
-            <textarea
-              className="editable-text"
-              value={selectedText}
-              onChange={(e) => setSelectedText(e.target.value)}
-              placeholder="텍스트를 입력하거나 선택하세요"
-            />
+          <div ref={captureRef}>
+            <div
+              className="preview-container"
+              style={{
+                backgroundImage: `url(${selectedImage})`,
+                height: "400px",
+                position: "relative",
+                padding: "10px",
+                boxSizing: "border-box",
+                overflow: "hidden"
+              }}
+            >
+              <div
+                className="editable-text"
+                contentEditable
+                suppressContentEditableWarning
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  justifyItems: "center",
+                  
+                  lineHeight: "1.5",
+                  whiteSpace: "pre-wrap",
+                  wordWrap: "break-word",
+                  overflow: "hidden"
+                }}
+                onChange={(e) => setSelectedText(e.target.value)}
+              >
+                {selectedText || "텍스트를 입력하거나 선택하세요"}
+              </div>
+            </div>
           </div>
         </div>
       </div>

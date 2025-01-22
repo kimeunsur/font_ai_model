@@ -13,8 +13,8 @@ import com.example.npds.repository.UserRepository;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    
     public User saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
