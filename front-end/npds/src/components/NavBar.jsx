@@ -33,8 +33,8 @@ const NavBar = () => {
     navigate("/main");
   };
 
-  const handleColorPick = async (index, event) => {
-    event.preventDefault(); // 우클릭 메뉴 기본 동작 막기
+  const handleRightClick = async (index, event) => {
+    event.preventDefault(); // 우클릭 기본 동작 방지
 
     if (!window.EyeDropper) {
       alert("이 브라우저는 EyeDropper API를 지원하지 않습니다.");
@@ -65,17 +65,29 @@ const NavBar = () => {
       newSvgUrls[index] = newSvgUrl;
       setSvgUrl(newSvgUrls);
 
-      // 이전 회전 상태 초기화 및 클릭된 요소의 회전 상태 활성화
-      const newRotating = Array(13).fill(false);
-      newRotating[index] = true;
-      setRotating(newRotating);
-
       // --text-color 업데이트
       setButtonColor(color);
       document.documentElement.style.setProperty("--text-color", color);
+
+      // 이전 회전 상태 초기화 및 클릭된 요소만 회전 활성화
+      const newRotating = Array(13).fill(false);
+      newRotating[index] = true;
+      setRotating(newRotating);
     } catch (err) {
       console.error("색상 선택 취소 또는 오류:", err);
     }
+  };
+
+  const handleLeftClick = (index) => {
+    // 클릭된 요소의 색상을 --text-color로 업데이트
+    const color = colors[index];
+    setButtonColor(color);
+    document.documentElement.style.setProperty("--text-color", color);
+
+    // 이전 회전 상태 초기화 및 클릭된 요소만 회전 활성화
+    const newRotating = Array(13).fill(false);
+    newRotating[index] = true;
+    setRotating(newRotating);
   };
 
   if (loading) {
@@ -96,7 +108,8 @@ const NavBar = () => {
           <img
             src={svgUrl[index] || BlueAreas}
             alt={`Dynamic SVG ${index + 1}`}
-            onContextMenu={(event) => handleColorPick(index, event)} // 우클릭 이벤트 처리
+            onClick={() => handleLeftClick(index)} // 좌클릭 이벤트 처리
+            onContextMenu={(event) => handleRightClick(index, event)} // 우클릭 이벤트 처리
             className="color-picker-active"
           />
           <img

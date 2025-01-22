@@ -6,7 +6,7 @@ const initialState = {
   svgUrl: Array(13).fill(BlueAreas), // 각 요소의 초기 SVG URL 배열
   buttonColor: "#000", // --text-color에 사용
   rotating: Array(13).fill(false), // 각 요소의 초기 회전 상태
-  colors: Array(13).fill("#0000ff"), // 각 요소의 초기 색상
+  colors: Array(13).fill("#000"), // 각 요소의 초기 색상
   lastRotatingIndex: null, // 마지막으로 회전한 요소의 인덱스
 };
 
