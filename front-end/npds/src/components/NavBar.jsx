@@ -22,6 +22,8 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   const colorPickers = Array.from({ length: 10 });
+  const longClickDuration = 1000; // 꾹 누르는 시간 (1초)
+  let clickTimer = null;
 
   const handleLogout = () => {
     logoutUser();
@@ -49,7 +51,7 @@ const NavBar = () => {
 
       // 클릭된 요소의 색상 업데이트
       const newColors = [...colors];
-      newColors[index] = color; // 클릭된 요소만 색상 변경
+      newColors[index] = color;
       setColors(newColors);
 
       // SVG 파일 읽어서 클릭된 요소만 URL 업데이트
@@ -90,6 +92,42 @@ const NavBar = () => {
     setRotating(newRotating);
   };
 
+  const handleLongLeftClick = (index) => {
+    // 해당 요소의 색상과 상태를 기본값으로 초기화
+    const newColors = [...colors];
+    newColors[index] = "#000"; // 기본 색상
+    setColors(newColors);
+
+    const newSvgUrls = [...svgUrl];
+    newSvgUrls[index] = BlueAreas; // 기본 SVG URL
+    setSvgUrl(newSvgUrls);
+
+    setButtonColor("#000"); // --text-color 기본값
+    document.documentElement.style.setProperty("--text-color", "#000");
+
+    const newRotating = [...rotating];
+    newRotating[index] = false; // 회전 상태 해제
+    setRotating(newRotating);
+  };
+
+  const handleMouseDown = (index) => {
+    clickTimer = setTimeout(() => {
+      handleLongLeftClick(index); // 꾹 누르는 좌클릭 동작
+      clickTimer = null;
+    }, longClickDuration);
+  };
+
+  const handleMouseUp = (index, isLeftClick) => {
+    if (clickTimer) {
+      clearTimeout(clickTimer);
+      clickTimer = null;
+
+      if (isLeftClick) {
+        handleLeftClick(index); // 짧은 좌클릭 동작
+      }
+    }
+  };
+
   if (loading) {
     return <nav className="navbar">로딩중 ...</nav>;
   }
@@ -108,8 +146,9 @@ const NavBar = () => {
           <img
             src={svgUrl[index] || BlueAreas}
             alt={`Dynamic SVG ${index + 1}`}
-            onClick={() => handleLeftClick(index)} // 좌클릭 이벤트 처리
-            onContextMenu={(event) => handleRightClick(index, event)} // 우클릭 이벤트 처리
+            onMouseDown={() => handleMouseDown(index)} // 좌클릭 & 꾹 누르기 처리
+            onMouseUp={(e) => handleMouseUp(index, e.button === 0)} // 좌클릭 구분
+            onContextMenu={(event) => handleRightClick(index, event)} // 우클릭 처리
             className="color-picker-active"
           />
           <img
