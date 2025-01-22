@@ -3,10 +3,10 @@ import BlueAreas from "./styles/aaa (1).svg"; // 초기 SVG 파일 경로
 
 // 초기 상태 정의
 const initialState = {
-  svgUrl: Array(13).fill(BlueAreas), // 각 요소의 초기 SVG URL 배열
+  svgUrl: Array(10).fill(BlueAreas), // 각 요소의 초기 SVG URL 배열
   buttonColor: "#000", // --text-color에 사용
-  rotating: Array(13).fill(false), // 각 요소의 초기 회전 상태
-  colors: Array(13).fill("#000"), // 각 요소의 초기 색상
+  rotating: Array(10).fill(false), // 각 요소의 초기 회전 상태
+  colors: Array(10).fill("#000"), // 각 요소의 초기 색상
   lastRotatingIndex: null, // 마지막으로 회전한 요소의 인덱스
 };
 

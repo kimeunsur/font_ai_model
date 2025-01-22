@@ -21,7 +21,7 @@ const NavBar = () => {
   } = useColor();
   const navigate = useNavigate();
 
-  const colorPickers = Array.from({ length: 13 });
+  const colorPickers = Array.from({ length: 10 });
 
   const handleLogout = () => {
     logoutUser();
@@ -70,7 +70,7 @@ const NavBar = () => {
       document.documentElement.style.setProperty("--text-color", color);
 
       // 이전 회전 상태 초기화 및 클릭된 요소만 회전 활성화
-      const newRotating = Array(13).fill(false);
+      const newRotating = Array(10).fill(false);
       newRotating[index] = true;
       setRotating(newRotating);
     } catch (err) {
@@ -85,7 +85,7 @@ const NavBar = () => {
     document.documentElement.style.setProperty("--text-color", color);
 
     // 이전 회전 상태 초기화 및 클릭된 요소만 회전 활성화
-    const newRotating = Array(13).fill(false);
+    const newRotating = Array(10).fill(false);
     newRotating[index] = true;
     setRotating(newRotating);
   };
