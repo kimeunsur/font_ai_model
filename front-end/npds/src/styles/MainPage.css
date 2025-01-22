@@ -13,17 +13,25 @@
 }
 
 .heading-box {
+  opacity: 0;
+  transform: translateY(-20px); /* 초기 상태 */
   width: 50%; /* 너비를 50%로 설정 */
   height: 150vh; /* 높이 설정 */
   overflow-y: auto; /* 내용이 넘칠 경우 스크롤 */
+  margin: 100px;
+  text-align: center;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.4);
+  /* background-color: rgba(255, 255, 255, 0.4); */
   text-align: left; /* 텍스트 왼쪽 정렬 */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 그림자 효과 */
+  transition: opacity 1s ease, transform 1s ease;
 }
-  
+.heading-box.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
   .hheading {
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     font-weight: bold;
     color: #333;
     text-align: left;
@@ -31,12 +39,18 @@
   }
   
   .description {
-    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 1s ease, transform 1s ease;
+    font-size: 1.2rem;
     line-height: 2;
     color: #555;
     text-align: left;
   }
-  
+  .description.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
   .description .highlight {
     color: #007bff;
     font-weight: bold;
@@ -48,7 +62,9 @@
     font-style: italic;
     color: #888;
   }
-  
+  .custom-margin {
+    margin-top: 10px;
+  }
   .logout-text {
     text-decoration: underline;
     cursor: pointer;
@@ -57,46 +73,55 @@
   }  
 
   .button-group {
+    opacity: 0;
+    transform: translateY(20px); /* 초기 상태 */
     display: flex;
     flex-direction: column; /* 버튼을 세로로 배치 */
-    gap: 20px; /* 버튼 간 간격 */
-    align-items: center; /* 버튼을 왼쪽 정렬 */
+    gap: 50px; /* 버튼 간 간격 */
+    align-items: left; /* 버튼을 왼쪽 정렬 */
     justify-content: center;
-    width: 30%; /* 너비 설정 */
     height: 80vh; /* 높이 설정 */
-    padding: 20px;
+    padding: 50px;
+    margin-right: 10%;
+    transition: opacity 2s ease, transform 2s ease;
   }
-  
+  .button-group.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
   .button {
+    width: 300px;
     padding: 0.75rem 1.5rem; /* Tailwind's px-6 py-3 */
     font-size: 1.25rem; /* Tailwind's text-xl (20px) */
     border-radius: 0.5rem; /* Tailwind's rounded-lg */
+    border-color: transparent;
     color: white; /* Tailwind's text-white */
     cursor: pointer; /* Add pointer cursor for button */
     transition: background-color 0.3s ease; /* Smooth hover transition */
   }
   
   .button-blue {
-    background-color: #3b82f6; /* Tailwind's bg-blue-500 */
+    background-color: #e7ffa1; /* Tailwind's bg-blue-500 */
+    color: black;
   }
   
   .button-blue:hover {
-    background-color: #2563eb; /* Tailwind's hover:bg-blue-600 */
+    background-color: #d0ea69; /* Tailwind's hover:bg-blue-600 */
   }
   
   .button-green {
-    background-color: #22c55e; /* Tailwind's bg-green-500 */
+    background-color: #7deaa5; /* Tailwind's bg-green-500 */
   }
   
   .button-green:hover {
-    background-color: #16a34a; /* Tailwind's hover:bg-green-600 */
+    background-color: #39d071; /* Tailwind's hover:bg-green-600 */
   }
   
   .button-yellow {
-    background-color: #eab308; /* Tailwind's bg-yellow-500 */
+    background-color: #f5acf8; /* Tailwind's bg-yellow-500 */
   }
   
   .button-yellow:hover {
-    background-color: #ca8a04; /* Tailwind's hover:bg-yellow-600 */
+    background-color: #e462eb; /* Tailwind's hover:bg-yellow-600 */
   }
   

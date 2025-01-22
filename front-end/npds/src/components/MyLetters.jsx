@@ -38,9 +38,7 @@ const MyLetters = () => {
 
   return (
     <main className="main">
-      <h1 className="heading">{user.name} 만의 편지~</h1>
       <div className="content-container">
-        {/* 추가된 편지 리스트 */}
         <h1 className="heading">~{user.name} 만의 편지 목록~</h1>
         <div className="subbox">
           {letters.length === 0 ? (
@@ -48,7 +46,10 @@ const MyLetters = () => {
           ) : (
             <ul>
               {letters.map((letter) => (
-                <li key={letter.id}>
+                <li key={letter.id}
+                  onClick={()=> setSelectedLetter({...letter})}
+                  className={`letter-item ${selectedLetter?.id === letter.id ? "selected":""}`}
+                >
                   <p>편지 내용: {letter.content}</p>
                   <p>작성일: {new Date(letter.addedAt).toLocaleString()}</p>
                 </li>
@@ -58,8 +59,16 @@ const MyLetters = () => {
 
         {/* 휴지통 */}
         {selectedLetter && (
-          <div className="trash-container" onClick={handleTrashClick}>
-            <img src={trashIcon} alt="Trash Icon" className="trash-icon" />
+          <div>
+            <h2>선택된 편지</h2>
+            {selectedLetter.content ? (
+              <img src={selectedLetter.content} alt="Selected Letter" />
+            ) : (
+              <p>편지 내용을 불러올 수 없습니다.</p>
+            )}
+            <div className="trash-container" onClick={handleTrashClick}>
+              <img src={trashIcon} alt="Trash Icon" className="trash-icon" />
+            </div>
           </div>
         )}
         </div>

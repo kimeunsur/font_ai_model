@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import bononukki from "../styles/aaa.png";
 
 const FinalLetter = () => {
   const location = useLocation();
@@ -15,38 +16,39 @@ const FinalLetter = () => {
   return (
     <main className="main">
       <div
-        className="output-group"
-        style={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "600px", // 캡처된 원본 비율에 맞춰 고정
-          aspectRatio: "4 / 3", // 비율 고정 (가로:세로)
-          overflow: "hidden",
-          border: "1px solid #ccc",
-        }}
+        style={{hieght: "100vh", display: "flex", flexDirection:"column", justifyContent: "center", alignItems:"center", overflow:"hidden"}}
+
       >
-        <label className="output-label" style={{ display: "block", textAlign: "center", marginBottom: "10px" }}>
+        <label className="output-label"
+          style={{
+            display: "block",
+            marginBottom: "10px",
+            fontSize: "3rem",
+            fontWeight: "bold",
+          }}
+        >
           최종편지다 이 말이야
         </label>
           {ImageData ? (
             <img src={ImageData} 
               alt="Final Letter"
               style = {{
-                maxWidth: "100%",
+                maxHeight: "50vh",
                 height: "auto",
-                width: "100%",
-                height: "100%",
+                width: "auto",
                 display: "block",
-                objectFit: "cover",
-                margin: "0 auto",
+                objectFit: "contain",
+                marginRight: "50px",                
+                marginLeft: "80px",    
+                marginTop: "50px"            
               }}
             />
           ) : (
             <p>전달된 데이터가 없습니다</p>
           )}
         </div>
-        <button onClick={gotoLetterStorage} style={{ marginTop: "20px", padding: "10px 20px", fontSize: "16px" }}>
-          편지 저장소로 기기
+        <button onClick={gotoLetterStorage} style={{ background: "none", border: "none",  padding: "10px 20px", fontSize: "16px" }}>
+          <img className="button-image" src={bononukki}/>
         </button>
       </main>
   );
