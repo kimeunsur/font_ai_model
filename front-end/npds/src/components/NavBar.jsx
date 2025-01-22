@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useUser } from "../UserContext";
 import { useNavigate } from "react-router-dom";
+import { useColor } from "../ColorContext";
 import BlueAreas from "../styles/aaa (1).svg";
 import nonBlueAreas from "../styles/bbb_transparent.png";
 import "../styles/NavBar.css";
 import sibal from "../styles/bononukki.png";
 
 const NavBar = () => {
-  const { user, logoutUser, loading } = useUser();  
+  const { user, logoutUser, loading } = useUser();
+  const { svgUrl, setSvgUrl, buttonColor, setButtonColor } = useColor();
   const navigate = useNavigate();
 
-  const [svgUrl, setSvgUrl] = useState(BlueAreas);
-  const [buttonColor, setButtonColor] = useState("#0000ff"); // 버튼 색상
+  // const [svgUrl, setSvgUrl] = useState(BlueAreas);
+  // const [buttonColor, setButtonColor] = useState("#0000ff"); // 버튼 색상
   const [trackingColor, setTrackingColor] = useState(false); // 색상 선택 모드 여부
   
   const handleLogout = () => {
@@ -66,7 +68,7 @@ const NavBar = () => {
       <div className="color-picker-wrapper">
         {/* 클릭 가능한 blue_areas.png */}
         <img
-          src={svgUrl}
+          src={svgUrl || BlueAreas}
           alt="Dynamic SVG"
           onClick={handleColorPick}
           className="color-picker-active"
