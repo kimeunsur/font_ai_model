@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useUser } from "../UserContext";
 import { useNavigate } from "react-router-dom";
-import BlueAreas from "../styles/aaa_updated.svg";
+import BlueAreas from "../styles/aaa (1).svg";
 import nonBlueAreas from "../styles/bbb_transparent.png";
 import "../styles/NavBar.css";
 import sibal from "../styles/bononukki.png";
@@ -13,9 +13,7 @@ const NavBar = () => {
   const [svgUrl, setSvgUrl] = useState(BlueAreas);
   const [buttonColor, setButtonColor] = useState("#0000ff"); // 버튼 색상
   const [trackingColor, setTrackingColor] = useState(false); // 색상 선택 모드 여부
-
-  console.log('current color: ' + buttonColor);
-
+  
   const handleLogout = () => {
     logoutUser();
     navigate("/");

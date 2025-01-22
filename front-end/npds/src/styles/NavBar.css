@@ -38,8 +38,8 @@
   /* 버튼 래퍼 */
 .color-picker-wrapper {
   position: relative;
-  width: 50px; /* 버튼 크기 */
-  height: 50px;
+  width: 80px; /* 버튼 크기 */
+  height: 80px;
 }
 
 /* 클릭 가능한 blue_areas.png */
