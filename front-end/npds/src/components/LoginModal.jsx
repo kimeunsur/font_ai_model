@@ -4,7 +4,7 @@ import { useUser } from "../UserContext";
 import "../styles/LoginModal.css";
 import kakaotalkLogo1 from "../styles/KakaoTalk_logo.svg";
 import closeX from "../styles/close-x.svg";
-import { pass } from "three/tsl";
+// import { pass } from "three/tsl";
 
 const LoginModal = ({ isOpen, onClose, onSignUp, onLoginSuccess }) => {
   const [email, setEmail] = useState("");
