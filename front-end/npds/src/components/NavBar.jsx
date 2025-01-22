@@ -17,8 +17,6 @@ const NavBar = () => {
     setRotating,
     colors,
     setColors,
-    lastRotatingIndex,
-    setLastRotatingIndex,
     resetColors,
   } = useColor();
   const navigate = useNavigate();
@@ -35,7 +33,9 @@ const NavBar = () => {
     navigate("/main");
   };
 
-  const handleColorPick = async (index) => {
+  const handleColorPick = async (index, event) => {
+    event.preventDefault(); // 우클릭 메뉴 기본 동작 막기
+
     if (!window.EyeDropper) {
       alert("이 브라우저는 EyeDropper API를 지원하지 않습니다.");
       return;
@@ -49,7 +49,7 @@ const NavBar = () => {
 
       // 클릭된 요소의 색상 업데이트
       const newColors = [...colors];
-      newColors[index] = color;
+      newColors[index] = color; // 클릭된 요소만 색상 변경
       setColors(newColors);
 
       // SVG 파일 읽어서 클릭된 요소만 URL 업데이트
@@ -69,9 +69,6 @@ const NavBar = () => {
       const newRotating = Array(13).fill(false);
       newRotating[index] = true;
       setRotating(newRotating);
-
-      // 마지막 회전 인덱스 업데이트
-      setLastRotatingIndex(index);
 
       // --text-color 업데이트
       setButtonColor(color);
@@ -99,7 +96,7 @@ const NavBar = () => {
           <img
             src={svgUrl[index] || BlueAreas}
             alt={`Dynamic SVG ${index + 1}`}
-            onClick={() => handleColorPick(index)}
+            onContextMenu={(event) => handleColorPick(index, event)} // 우클릭 이벤트 처리
             className="color-picker-active"
           />
           <img
