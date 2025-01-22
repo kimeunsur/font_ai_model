@@ -1,0 +1,8 @@
+body {
+    background-image: url("./styles/background.png");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    margin: 0; /* 기본 여백 제거 */
+    padding: 0; /* 기본 여백 제거 */
+  }

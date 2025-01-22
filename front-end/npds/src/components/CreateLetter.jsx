@@ -44,8 +44,9 @@ const CreateLetter = () => {
 
   return (
     <main className="main">
-      {/* 화면 좌측 상단 제목 */}
-      <h1 className="heading">대충 편지 생성 제목</h1>
+      <div className={{display: "flex"}}>
+      <div className="main-createletter">
+      <h1 className="heading-createletter">대충 편지 생성 제목</h1>
 
       {/* 입력 영역 */}
       <div className="input-section">
@@ -78,10 +79,10 @@ const CreateLetter = () => {
           />
         </div>
 
-        <button className="submit-button" onClick={handleSubmit}>
+        <button className="submit-button-createletter" onClick={handleSubmit}>
           생성
         </button>
-      </div>
+      </div></div></div>
     </main>
   );
 };

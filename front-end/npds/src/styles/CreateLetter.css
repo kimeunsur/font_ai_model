@@ -1,32 +1,28 @@
 /* styles/CreateLetter.css */
-.main {
-    min-height: 100vh; /* Tailwind's min-h-screen */
-    display: flex; /* Tailwind's flex */
+.main-createletter {
     align-items: center; /* Tailwind's items-center */
     justify-content: center; /* Tailwind's justify-center */
-    background-image: url("./background.png"); /* 이미지 URL */
-    background-size: cover; /* Tailwind's backgroundSize: cover */
-    background-position: center; /* Tailwind's backgroundPosition: center */
-    background-repeat: no-repeat; /* Tailwind's backgroundRepeat: no-repeat */
   }
   
-  .heading {
-    font-size: 2.25rem; /* Tailwind's text-4xl (36px) */
+  .heading-createletter {
+    display: flex;
+    font-size: 2.5rem; /* Tailwind's text-4xl (36px) */
     font-weight: 700; /* Tailwind's font-bold */
-    margin-bottom: 20px;
+    margin-bottom: 70px;
   }
   
   .input-section {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 100%;
+    justify-content: center;
+    gap: 30px;
+    width: 95%;
   }
   
   .input-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
   }
   
   .input-label {
@@ -36,23 +32,29 @@
   
   .text-input {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: transparent;
     font-size: 14px;
-    width: 100%;
+    width: 93%;
     max-width: 400px;
   }
-  
-  .submit-button {
+  .text-input:focus {
+    outline: none;
+  }
+  .submit-button-createletter {
     padding: 10px 20px;
     background-color: #9859e1;
     color: white;
     border: none;
     border-radius: 5px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     font-size: 14px;
   }
   
-  .submit-button:hover {
+  .submit-button-createletter:hover {
     background-color: #ad90c4;
   }

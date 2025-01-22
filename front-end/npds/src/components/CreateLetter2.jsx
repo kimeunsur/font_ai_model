@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/CreateLetter2.css";
 import html2canvas from "html2canvas";
 import { letterStore } from "../systems/request";
+import bononukki from "../styles/aaa.png";
 
 const CreateLetter2 = () => {
   const location = useLocation();
@@ -11,7 +12,6 @@ const CreateLetter2 = () => {
   const [selectedText, setSelectedText] = useState(""); // 선택된 텍스트
   const [selectedImage, setSelectedImage] = useState(null); // 선택된 이미지
   const captureRef = useRef(null);
-
   const handleSubmit = async () => {
 
     if (!captureRef.current) return;
@@ -35,7 +35,7 @@ const CreateLetter2 = () => {
   }
 
   return (
-    <main className="main">
+    <main className="main-createletter2">
       <div className="output-section">
         {/* 첫 번째 그룹 */}
         <div className="output-group">
@@ -104,7 +104,7 @@ const CreateLetter2 = () => {
                   wordWrap: "break-word",
                   overflow: "hidden"
                 }}
-                onChange={(e) => setSelectedText(e.target.value)}
+                onChange={(e) => setSelectedText(e.currentTarget.textContent)}
               >
                 {selectedText || "텍스트를 입력하거나 선택하세요"}
               </div>
@@ -112,7 +112,9 @@ const CreateLetter2 = () => {
           </div>
         </div>
       </div>
-      <button onClick={handleSubmit}>이걸 카톡으로 보낼게!</button>
+      <button className="image-button" onClick={handleSubmit}>
+        <img className="button-image" src={bononukki}/>
+      </button>
     </main>
   );
 };
