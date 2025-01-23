@@ -39,7 +39,7 @@ const MyLetters = () => {
   return (
     <main className="main">
       <div className="content-container">
-        <h1 className="heading">~{user.name} 만의 편지 목록~</h1>
+        <h1 className="heading">~{user.name}의 편지 목록~</h1>
         <div className="subbox">
           {letters.length === 0 ? (
             <p>편지가 없습니다.</p>
