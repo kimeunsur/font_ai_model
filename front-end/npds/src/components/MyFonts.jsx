@@ -5,6 +5,7 @@ import { useUser } from "../UserContext";
 import "../styles/MyFonts.css";
 
 const MyFonts = () => {
+  
   const [fonts, setFonts] = useState([]);
   const { user } = useUser();
   const navigate = useNavigate();
@@ -22,6 +23,8 @@ const MyFonts = () => {
     });
     setFonts(testFontData); // 폰트 데이터를 상태에 저장
   }, []);
+
+  if (!user) { navigate("/"); return null; }
 
   return (
     <main className="main">

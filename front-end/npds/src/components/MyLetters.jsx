@@ -4,12 +4,14 @@ import { useUser } from "../UserContext";
 import "../styles/MyLetters.css";
 import trashIcon from "../styles/output_trash_transparent.png"; // 휴지통 이미지 가져오기
 import { fetchUserLetters } from "../systems/request";
+import { useNavigate } from "react-router-dom";
 
 const MyLetters = () => {
   const [letters, setLetters] = useState([]);
   const [selectedLetter, setSelectedLetter] = useState(null); // 선택된 편지 상태
   const { user } = useUser();
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // 휴지통 클릭 이벤트 핸들러
   const handleTrashClick = () => {
@@ -35,6 +37,8 @@ const MyLetters = () => {
     };
     getLetters();
   }, []);
+
+  if (!user) { navigate("/"); return null; }
 
   return (
     <main className="main">
