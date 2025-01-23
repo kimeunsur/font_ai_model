@@ -1,6 +1,6 @@
 /* styles/CreateLetter.css */
 .main-createletter {
-    align-items: center; /* Tailwind's items-center */
+    align-items: flex-start; /* Tailwind's items-center */
     justify-content: center; /* Tailwind's justify-center */
   }
   
