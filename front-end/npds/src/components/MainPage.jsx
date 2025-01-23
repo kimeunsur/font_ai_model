@@ -64,7 +64,7 @@ const MainPage = () => {
             onClick={() => navigate("/my-fonts")}
             className="button button-green"
           >
-            내 폰트 보러가기
+            폰트 적용하러 가기
           </button>
           <button
             onClick={() => navigate("/my-letters")}

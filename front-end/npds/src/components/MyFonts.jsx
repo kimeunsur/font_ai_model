@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import testFontData from "../data/testFontData";
 import { useUser } from "../UserContext";
+import { useFont } from "../FontContext"; // FontContext 추가
 import "../styles/MyFonts.css";
 
 const MyFonts = () => {
-  const [fonts, setFonts] = useState([]);
   const { user } = useUser();
+  const { selectedFont, updateFont } = useFont(); // FontContext 활용
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,12 +21,7 @@ const MyFonts = () => {
       `;
       document.head.appendChild(style);
     });
-    setFonts(testFontData); // 폰트 데이터를 상태에 저장
   }, []);
-
-  const handleFontClick = (fontName) => {
-    document.documentElement.style.setProperty("--font-family", fontName);
-  };
 
   if (!user) {
     navigate("/");
@@ -37,12 +33,12 @@ const MyFonts = () => {
       <div>
         <h1 className="heading">{user.name}님을 위한 폰뚜~</h1>
         <div className="subbox">
-          {fonts.map((font) => (
+          {testFontData.map((font) => (
             <div
               key={font.id}
               className="font-row"
-              onClick={() => handleFontClick(font.fontName)} // 클릭 이벤트 추가
-              style={{ cursor: "pointer" }} // 클릭 가능한 스타일
+              onClick={() => updateFont(font.fontName)} // 폰트 업데이트
+              style={{ cursor: "pointer" }}
             >
               <p className="font-name">{font.fontName}</p>
               <p
