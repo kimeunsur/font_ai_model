@@ -47,7 +47,7 @@ const MyFonts = () => {
                   fontFamily: font.fontName, // 동적으로 생성한 폰트 적용
                 }}
               >
-                {font.fontName} 샘플 텍스트입니다만
+                아무거나 하셈
               </p>
             </div>
           ))}
