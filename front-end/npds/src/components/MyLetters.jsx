@@ -10,6 +10,7 @@ const MyLetters = () => {
   const [selectedLetter, setSelectedLetter] = useState(null); // 선택된 편지 상태
   const { user } = useUser();
   const [error, setError] = useState(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   // 휴지통 클릭 이벤트 핸들러
   const handleTrashClick = () => {
@@ -36,6 +37,16 @@ const MyLetters = () => {
     getLetters();
   }, []);
 
+  const openPopup = (letter) => {
+    setSelectedLetter(letter);
+    setIsPopupOpen(true);
+  }
+
+  const closePopup = (letter) => {
+    setSelectedLetter(null);
+    setIsPopupOpen(false);
+  }
+
   return (
     <main className="main">
       <div className="content-container">
@@ -45,18 +56,35 @@ const MyLetters = () => {
             <p>편지가 없습니다.</p>
           ) : (
             <ul>
-              {letters.map((letter) => (
+              {letters.map((letter, index) => (
                 <li key={letter.id}
-                  onClick={()=> setSelectedLetter({...letter})}
+                  onClick={()=> openPopup(letter)}
                   className={`letter-item ${selectedLetter?.id === letter.id ? "selected":""}`}
                 >
-                  <p>편지 내용: {letter.content}</p>
+                  <p>편지 번호: {index + 1}</p>
                   <p>작성일: {new Date(letter.addedAt).toLocaleString()}</p>
                 </li>
               ))}
             </ul>
           )}
 
+          {isPopupOpen && (
+            <div className="myletter-popup">
+              <div className="myletter-popup-content">
+                <button className="myletter-popup-close" onClick={closePopup}>
+                  x
+                </button>
+                {selectedLetter?.content ? (
+                  <img
+                    src={selectedLetter.content}
+                    className="myletter-popup-image"
+                  />
+                ) : (
+                  <p>이미지 불러오기 실패~</p>
+                )}
+              </div>
+            </div>
+          )}
         {/* 휴지통 */}
         {selectedLetter && (
           <div>
