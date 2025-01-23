@@ -28,13 +28,13 @@ const CreateLetter = () => {
         steps: 50,
       };
     
-      //const imageResponse = await ImageResponse(prompt);
-      //console.log("이미지 생성 성공~:", imageResponse);
+      const imageResponse = await ImageResponse(prompt);
+      console.log("이미지 생성 성공~:", imageResponse);
 
 
       const requestData = {
         gptResponse,
-        textToImageInput,
+        imageResponse,
       };navigate("/create-letter-2", {state: requestData});
   } catch (error) {
       console.error("handleSubmit에서 오류 발생:", error);
