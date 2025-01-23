@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/CreateLetter2.css";
 import html2canvas from "html2canvas";
 import { letterStore } from "../systems/request";
-import bononukki from "../styles/aaa.png";
+import bononukki from "../styles/combined_image.png";
 
 const CreateLetter2 = () => {
   const location = useLocation();
