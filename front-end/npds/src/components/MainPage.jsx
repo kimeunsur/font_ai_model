@@ -6,6 +6,7 @@ import "../styles/MainPage.css"; // CSS 파일 가져오기
 const MainPage = () => {
   const navigate = useNavigate();
   const [animateHeading, setAnimateHeading] = useState(false);
+  const [isFirstVisit, setIsFirstVisit] = useState(false); // 첫 방문 여부 상태
   const [animateButtons, setAnimateButtons] = useState(false);
   const [animateDescription, setAnimateDescription] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
@@ -13,17 +14,25 @@ const MainPage = () => {
   useEffect(() => {
     const hasVisited = localStorage.getItem("mainpageVisited");
     if (!hasVisited) {
-      setAnimateButtons(true);
+      setIsFirstVisit(true);
       localStorage.setItem("mainpageVisited", 'true');
+    } else {
+      setAnimateHeading(true);
+      setAnimateDescription(true);
+      setAnimateButtons(true);
     }
-    setTimeout(() => setAnimateHeading(true), 0);
-    setTimeout(() => setAnimateDescription(true), 2000);
-    setTimeout(() => setAnimateButtons(true), 3000);
+    if (!hasVisited) {
+      setTimeout(() => setAnimateHeading(true), 0);
+      setTimeout(() => setAnimateDescription(true), 2000);
+      setTimeout(() => setAnimateButtons(true), 3000);
+    }
+
   }, []);
   return (
     <div>
       <main className="mmain">
       <div className={`heading-box ${animateHeading ? "animate" : ""}`}>
+        <div>
         <h1 className="hheading">뭐, 대충 해줄 테니까 감성 그런 거 기대하지 마</h1>
           <p className={`description ${animateDescription ? "animate" : ""}`}>
             세상은 감성이 넘치고, 사람들은 아름다운 말을 주고받는다. 하지만 어디선가 누군가는 고민한다.
@@ -46,7 +55,6 @@ const MainPage = () => {
             이제, 손가락 한 번 움직여라.
             <br />
             니가 감성 없는 카이스트생이라면, 그건 아무 문제가 아니다.
-            <br />
             <br />
           </p>
             <h1 className="hheading">왜냐하면, 우리가 <strong>니편</strong>이니까.</h1>
@@ -72,7 +80,7 @@ const MainPage = () => {
           >
             내 편지 보러가기
           </button>
-        </div>
+        </div></div>
       </main>
     <NavBar />
   </div>
